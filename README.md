@@ -1,6 +1,6 @@
 # Module_01. lesson_01
 
-## What is React? Why is React? 
+## 1.What is React? Why is React? 
 
 ### who is use React?
 - facebook
@@ -10,26 +10,27 @@
 ### using rate
 [https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/](https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/)
 
-## MPA vs SPA
+## 2. MPA vs SPA
 ### SPA example
 [https://www.irynaprudko.com.ua/](https://www.irynaprudko.com.ua/)
 ### MPA example
 [https://concisesoftware.com/](https://concisesoftware.com/)    
 
-## DOM | VDOM
+## 3. DOM | VDOM
 
-## JSX | createElement | components
+## 4. JSX | createElement | components
 ### Header > logo + navlist
 
-## components vs function
-### what is? how it use?
+## 5. components vs function
+### what is? how it use? -> Message {author, text}
 ### props
+### unvisible values -> null | bools | undefined | array
 ### render by condition
 
-## unvisible values -> null | bools | undefined | array
+## 6. render list items | key
+### render json data
 
-## render list items | key
+## 7. Fragment
 
-## Fragment
-
-## children
+## 8. children
+### Container | Section | Modal ...
