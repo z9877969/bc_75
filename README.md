@@ -1,12 +1,35 @@
-# React + Vite
+# Module_01. lesson_01
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What is React? Why is React? 
 
-Currently, two official plugins are available:
+### who is use React?
+- facebook
+- netflix
+- 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### using rate
+[https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/](https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/)
 
-## Expanding the ESLint configuration
+## MPA vs SPA
+### SPA example
+[https://www.irynaprudko.com.ua/](https://www.irynaprudko.com.ua/)
+### MPA example
+[https://concisesoftware.com/](https://concisesoftware.com/)    
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## DOM | VDOM
+
+## JSX | createElement | components
+### Header > logo + navlist
+
+## components vs function
+### what is? how it use?
+### props
+### render by condition
+
+## unvisible values -> null | bools | undefined | array
+
+## render list items | key
+
+## Fragment
+
+## children
