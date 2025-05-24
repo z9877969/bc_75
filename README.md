@@ -20,6 +20,9 @@
 
 ## 4. JSX | createElement | components
 ### Header > logo + navlist
+### React DevTools
+
+
 
 ## 5. components vs function
 ### what is? how it use? -> Message {author, text}
