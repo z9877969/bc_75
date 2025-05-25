@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "message": "To do some activity 1",
+    "priotity": "low",
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "message": "To do some activity 2",
+    "priotity": "high",
+    "status": "closed"
+  },
+  {
+    "id": 3,
+    "message": "To do some activity 3",
+    "priotity": "medium",
+    "status": "active"
+  },
+  {
+    "id": 4,
+    "message": "To do some activity 3",
+    "priotity": "medium",
+    "status": "closed"
+  }
+]

@@ -1,36 +1,24 @@
-# Module_01. lesson_01
+# Module_01. lesson_02 
+# * STYLES *
 
-## 1.What is React? Why is React? 
+## 1. Інлайнові стилі
 
-### who is use React?
-- facebook
-- netflix
-- 
+## 2. modern_normalize
 
-### using rate
-[https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/](https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/)
+## 3. глобальні css | scss
+### вкладеність - nesting
+### медіа правила
 
-## 2. MPA vs SPA
-### SPA example
-[https://www.irynaprudko.com.ua/](https://www.irynaprudko.com.ua/)
-### MPA example
-[https://concisesoftware.com/](https://concisesoftware.com/)    
+## 4. модулі стилів
 
-## 3. DOM | VDOM
+## 5. композиція стилів | clsx
 
-## 4. JSX | createElement | components
-### Header > logo + navlist
+## 6. composes в css модулях
 
-## 5. components vs function
-### what is? how it use? -> Message {author, text}
-### props
-### unvisible values -> null | bools | undefined | array
-### render by condition
+## 7. імпорт зображень
 
-## 6. render list items | key
-### render json data
+## 8. npm react-isons
 
-## 7. Fragment
-
-## 8. children
-### Container | Section | Modal ...
+## 9. стилізація всіх компонентів.
+`-` Profile
+`-` TodoList
