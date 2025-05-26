@@ -1,33 +1,55 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+// import React, { Fragment } from 'react';
+import productsList from './assets/data.json';
+import Header from './components/Header/Header';
+import Message from './components/Message/Message';
+import Product from './components/Product/Product';
+import Section from './components/Section/Section';
+import MainSection from './MainSection/MainSection';
 import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0);
+// const navEl = React.createElement(
+//   'nav',
+//   {},
+//   React.createElement('ul', { className: 'list' }),
+//   null
+// );
 
+// const headerEl = React.createElement('header', { className: 'header' }, navEl);
+
+// const sum = () => 3 + 2;
+
+function App() {
+  // return headerEl;
+
+  const mainTitle = 'App';
+  // const subTitle = 'sub';
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      {/* {Header()} */}
+      <main>
+        <MainSection title={mainTitle + ' ' + 'page'}>
+          {/* <h1>
+            {mainTitle} {subTitle}
+          </h1> */}
+          <Message message={'some message'} author={'bart simpson'} isVisible />
+          <Message
+            message={'some message'}
+            author={'bart simpson'}
+            isVisible={false}
+            isOnline={false}
+          />
+          {/* {sum()} */}
+        </MainSection>
+        <Section title={'Some section title - 1'}>
+          some section content - 1
+        </Section>
+        <Section content={'some section content - 2'} />
+
+        <Product products={productsList} />
+        {/* {Product({ products: productsList })} */}
+      </main>
+      <footer>logo</footer>
     </>
   );
 }
