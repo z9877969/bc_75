@@ -1,46 +1,26 @@
-# Module_01. lesson_01
+# Module_01. lesson_02 
+# * STYLES *
 
-## 1.Що таке React? Чому React?
-`-` низький поріг входу \
-`-` великий спектр для використання
+## 0. React DevTools
+## 1. Інлайнові стилі
 
-### Хто використовує React?
-`-` facebook \
-`-` netflix
+## 2. modern_normalize
 
-### using rate
-[статистика використання фреймворків](https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/)
+## 3. глобальні css | scss
+### вкладеність - nesting
+### медіа правила
+### змінні
 
-## 2. MPA vs SPA
-### SPA example
-[https://www.irynaprudko.com.ua/](https://www.irynaprudko.com.ua/)
-### MPA example
-[https://concisesoftware.com/](https://concisesoftware.com/)    
+## 4. модулі стилів
 
-## 3. npm create vite@latest
-`-` структура проекту \
-`-` вміст файлв та папок
+## 5. композиція стилів | clsx
 
-## 4. DOM | VDOM
+## 6. composes в css модулях
 
-## 5. JSX | createElement | components
-`-` Header > logo + navlist \
-`-` React DevTools
+## 7. імпорт зображень
 
-## 6. components | function
-`-` Як співвідносяться компоненти та функції? -> Message {author, text}
+## 8. npm react-isons
 
-## 7. Що таке props?
-`-` дефолтні пропси \
-`-` передача булевих пропсів - без значення
-
-## 8. Рендер за умовою + значення що не відображаються -> null | bools | undefined | array
-
-## 9. Рендер списку
-`-` пропс key
-`-` рендер json
-
-## 10. Fragment
-
-## 11. children
-`-` Container | Section | Modal ...
+## 9. стилізація всіх компонентів.
+`-` Profile
+`-` UI Button 

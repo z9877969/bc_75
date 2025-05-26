@@ -1,0 +1,26 @@
+{
+  "id": "u123456",
+  "username": "ivan_koval",
+  "email": "ivan.koval@example.com",
+  "firstName": "Іван",
+  "lastName": "Коваль",
+  "birthDate": "1990-05-14",
+  "gender": "male",
+  "phone": "+380931234567",
+  "address": {
+    "country": "Україна",
+    "city": "Львів",
+    "street": "вул. Шевченка, 12",
+    "postalCode": "79000"
+  },
+  "avatarUrl": "https://example.com/avatars/u123456.jpg",
+  "createdAt": "2024-01-10T08:30:00Z",
+  "lastLogin": "2025-05-25T10:15:00Z",
+  "roles": ["user", "editor"],
+  "isActive": true,
+  "preferences": {
+    "language": "uk",
+    "theme": "dark",
+    "notifications": true
+  }
+}

@@ -1,0 +1,42 @@
+.button {
+  border: none;
+  border-radius: 4px;
+  padding: 0.8em 1.2em;
+  background: none;
+}
+
+.small {
+  font-size: 0.8rem;
+}
+
+.medium {
+  font-size: 1.2rem;
+}
+
+.large {
+  font-size: 1.6rem;
+}
+
+.success {
+  background-color: rgb(0, 128, 0, 0.3);
+  color: green;
+  border: 1px solid green;
+}
+
+.error {
+  background-color: rgb(255, 0, 0, 0.3);
+  color: red;
+  border: 1px solid red;
+}
+
+.warn {
+  background-color: rgba(255, 165, 0, 0.3);
+  color: orange;
+  border: 1px solid orange;
+}
+
+.disabled {
+  background-color: rgb(128, 128, 128, 0.3);
+  color: grey;
+  border: 1px solid grey;
+}
