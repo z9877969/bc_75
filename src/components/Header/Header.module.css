@@ -1,0 +1,37 @@
+.header {
+  .nav {
+    background-color: red;
+  }
+
+  @media screen and (max-width: 768px) {
+    background-color: burlywood;
+  }
+
+  @media screen and (max-width: 1440px) {
+    background-color: burlywood;
+  }
+}
+
+.logo {
+  font-size: 45px;
+  color: yellow;
+
+  &:hover {
+    color: var(--main-title-color);
+  }
+}
+
+.burgerIcon {
+  width: 24px;
+  height: 24px;
+
+  stroke: blue;
+
+  &:hover {
+    stroke: green;
+  }
+}
+
+/* .logo:hover {
+  color: green;
+} */

@@ -22,3 +22,14 @@ const Button = ({
 };
 
 export default Button;
+
+// const obj = {
+//   a: 54,
+//   b: 'qwe'
+// }
+
+// obj.a
+
+// const key = "b";
+
+// obj[key] // -> obj.b
