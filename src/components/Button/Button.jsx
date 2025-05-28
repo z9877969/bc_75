@@ -6,6 +6,7 @@ const Button = ({
   type = 'button',
   size = 'small',
   variant = 'success',
+  className,
 }) => {
   return (
     <button
@@ -14,7 +15,7 @@ const Button = ({
         console.log('object');
       }}
       disabled={variant === 'disabled'}
-      className={clsx(s.button, s[size], s[variant])}
+      className={clsx(s.button, s[size], s[variant], className && className)}
     >
       {children}
     </button>
@@ -22,14 +23,3 @@ const Button = ({
 };
 
 export default Button;
-
-// const obj = {
-//   a: 54,
-//   b: 'qwe'
-// }
-
-// obj.a
-
-// const key = "b";
-
-// obj[key] // -> obj.b

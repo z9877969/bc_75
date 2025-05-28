@@ -1,0 +1,19 @@
+.item {
+  display: flex;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 0.8rem 1.8rem;
+  background-color: #13813cb5;
+  border-radius: 0.8rem;
+  color: #ffffff;
+
+  transform: scale(1);
+  transition: transform 300ms linear;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

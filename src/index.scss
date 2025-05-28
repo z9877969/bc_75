@@ -15,11 +15,10 @@
   --main-title-color: red;
 }
 
-.app_wrapper {
-  background-color: lightblue;
-}
-
 button {
+  background: none;
+  padding: 0;
+  border: none;
   transform: scale(1);
   transition: transform 300ms linear;
 }
@@ -28,7 +27,21 @@ button:active {
   transform: scale(0.95);
 }
 
-.app__title--normal {
-  font-size: 20px;
-  color: red;
+img {
+  display: block;
+  width: 100%;
+}
+
+ul,
+li,
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
 }

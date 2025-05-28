@@ -1,37 +1,52 @@
 .header {
-  .nav {
-    background-color: red;
-  }
+  width: 100%;
+  padding: 16px 0;
+  background-color: #010a47f0;
+}
 
-  @media screen and (max-width: 768px) {
-    background-color: burlywood;
-  }
-
-  @media screen and (max-width: 1440px) {
-    background-color: burlywood;
-  }
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-  font-size: 45px;
-  color: yellow;
+  text-decoration: none;
+
+  img {
+    width: 50px;
+  }
 
   &:hover {
-    color: var(--main-title-color);
+    cursor: pointer;
   }
 }
 
-.burgerIcon {
-  width: 24px;
-  height: 24px;
+.list {
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  list-style: none;
+}
 
-  stroke: blue;
+.cartBtn {
+  width: 48px;
+  height: 48px;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.cartIcon {
+  width: 100%;
+  height: 100%;
+
+  fill: blue;
 
   &:hover {
     stroke: green;
   }
 }
-
-/* .logo:hover {
-  color: green;
-} */

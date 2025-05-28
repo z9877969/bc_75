@@ -1,46 +1,29 @@
-import { FiAlignJustify } from 'react-icons/fi';
+import { FaOpencart } from 'react-icons/fa';
 import NavItem from '../NavItem/NavItem';
-import styles from './Header.module.css';
+import Container from '../Container/Container';
+import s from './Header.module.css';
 
 const Header = () => {
   return (
-    <header
-      style={{
-        display: 'flex',
-        width: '100vw',
-        justifyContent: 'space-between',
-        padding: '24px',
-      }}
-      className={styles.header}
-    >
-      <a
-        href="#"
-        // style={{
-        //   color: 'red',
-        //   fontSize: '24px',
-        //   textTransform: 'unset',
-        // }}
-        className={styles.logo}
-      >
-        logo
-      </a>
-
-      <nav className={styles.nav}>
-        <ul
-          style={{
-            display: 'flex',
-            gap: '20px',
-            listStyle: 'none',
-          }}
-        >
-          <NavItem itemContent={'link'} itemNum={1} />
-          <NavItem itemContent={'link'} itemNum={1} />
-          <NavItem itemContent={'link'} itemNum={1} />
-        </ul>
-      </nav>
-      <FiAlignJustify
-        /* size={24} stroke="blue" */ className={styles.burgerIcon}
-      />
+    <header className={s.header}>
+      <Container className={s.container}>
+        <a href="#" className={s.logo}>
+          <img
+            className={s.logoImg}
+            src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?semt=ais_items_boosted&w=740"
+            alt="logo image"
+          />
+        </a>
+        <nav className={s.nav}>
+          <ul className={s.list}>
+            <NavItem>Counter</NavItem>
+            <NavItem>Products</NavItem>
+          </ul>
+        </nav>
+        <button type='button' className={s.cartBtn}>
+          <FaOpencart className={s.cartIcon} />
+        </button>
+      </Container>
     </header>
   );
 };

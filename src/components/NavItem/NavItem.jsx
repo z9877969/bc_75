@@ -1,8 +1,10 @@
-const NavItem = ({ itemContent, itemNum }) => {
+import s from './NavItem.module.css';
+
+const NavItem = ({ children }) => {
   return (
-    <li>
-      <a href="#">
-        {itemContent}-{itemNum}
+    <li className={s.item}>
+      <a href="#" className={s.link}>
+        {children}
       </a>
     </li>
   );
