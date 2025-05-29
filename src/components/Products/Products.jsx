@@ -1,5 +1,6 @@
 // import { MdFavorite } from "react-icons/md"; /* <MdFavorite /> */
 // import { MdFavoriteBorder } from "react-icons/md"; /* <MdFavoriteBorder /> */
+import { useState } from 'react';
 import Container from '../Container/Container';
 import Button from '../Button/Button';
 import defaultImage from '../../assets/images/default-featured-image.png.jpg';
@@ -7,10 +8,14 @@ import products from '../../assets/data.json';
 import s from './Products.module.css';
 import Cart from '../Cart/Cart';
 
-const Products = () => {
+const Products = ({ isCartOpen, closeCart }) => {
+  const [cartProducts, setCartProducts] = useState({});
+
+  const cartProductsList = Object.values(cartProducts);
   return (
     <>
       <Container>
+        {/* button open cart */}
         <ul className={s.list}>
           {products.map((product) => (
             <li key={product._id} className={s.item}>
@@ -23,14 +28,42 @@ const Products = () => {
                 />
               </div>
               <p className={s.price}>Price: {product.price}$</p>
-              <Button>Add to cart</Button>
+              <Button
+                handleClick={() => {
+                  setCartProducts({
+                    ...cartProducts,
+                    [product._id]: { ...product, amount: 1 },
+                  });
+                }}
+              >
+                Add to cart
+              </Button>
             </li>
           ))}
         </ul>
       </Container>
-      {/* <Cart /> */}
+      <Cart
+        isOpen={isCartOpen}
+        closeCart={closeCart}
+        products={cartProductsList}
+      />
     </>
   );
 };
 
 export default Products;
+
+// const o = {
+//   a: 25
+// }
+
+// o.a // 25
+// const key = "a"
+
+// o[key] // -> o.a - 25
+
+// const keyB = 'qwe';
+
+// o[keyB] = "98" // o.qwe = "98"
+
+// {[keyB]: 54} // {qwe: 94}

@@ -7,13 +7,12 @@ const Button = ({
   size = 'small',
   variant = 'success',
   className,
+  handleClick,
 }) => {
   return (
     <button
       type={type}
-      onClick={() => {
-        console.log('object');
-      }}
+      onClick={handleClick}
       disabled={variant === 'disabled'}
       className={clsx(s.button, s[size], s[variant], className && className)}
     >

@@ -4,21 +4,15 @@ import { MdDeleteForever, MdClose } from 'react-icons/md';
 import Button from '../Button/Button';
 import s from './Cart.module.css';
 
-const Cart = ({
-  products = [
-    {
-      _id: '640c2dd963a319ea671e383b',
-      name: 'Ackee',
-      img: 'https://ftp.goit.study/img/so-yummy/ingredients/640c2dd963a319ea671e383b.png',
-      amount: 1,
-      price: 8.99,
-    },
-  ],
-  isOpen = true,
-}) => {
+const Cart = ({ products = [], isOpen = false, closeCart }) => {
+  const handleSubmit = (params) => {
+    console.log('fetch data');
+    closeCart(false);
+  };
+
   return (
     <div className={clsx(s.container, isOpen && s.isOpen)}>
-      <button className={s.btnClose}>
+      <button className={s.btnClose} onClick={() => closeCart(false)}>
         <MdClose size={16} fill="#fff" />
       </button>
       <div className={s.productsList}>
@@ -36,7 +30,9 @@ const Cart = ({
           </div>
         ))}
       </div>
-      <Button className={s.btnSubmit}>Submit</Button>
+      <Button className={s.btnSubmit} handleClick={handleSubmit}>
+        Submit
+      </Button>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import NavItem from '../NavItem/NavItem';
 import Container from '../Container/Container';
 import s from './Header.module.css';
 
-const Header = () => {
+const Header = ({ changePageType, openCart }) => {
   return (
     <header className={s.header}>
       <Container className={s.container}>
@@ -16,11 +16,19 @@ const Header = () => {
         </a>
         <nav className={s.nav}>
           <ul className={s.list}>
-            <NavItem>Counter</NavItem>
-            <NavItem>Products</NavItem>
+            <NavItem handleClick={() => changePageType('counter')}>
+              Counter
+            </NavItem>
+            <NavItem handleClick={() => changePageType('products')}>
+              Products
+            </NavItem>
           </ul>
         </nav>
-        <button type='button' className={s.cartBtn}>
+        <button
+          type="button"
+          className={s.cartBtn}
+          onClick={() => openCart(true)}
+        >
           <FaOpencart className={s.cartIcon} />
         </button>
       </Container>
