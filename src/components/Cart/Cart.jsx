@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 import s from './Cart.module.css';
 
 const Cart = ({ products = [], isOpen = false, closeCart }) => {
-  const handleSubmit = (params) => {
+  const handleSubmit = () => {
     console.log('fetch data');
     closeCart(false);
   };

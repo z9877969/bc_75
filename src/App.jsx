@@ -11,12 +11,10 @@ function App() {
     <div>
       {/* <button
         type="button"
-        onClick={(event) => {
-          // console.dir(event.target);
-          // console.log('CLICK');
+        onClick={() => {
           setInterval(() => {
-            console.log('object');
-            setIsCartOpen(p => !p);
+            console.log('isCartOpen :>> ', isCartOpen);
+            setIsCartOpen(!isCartOpen);
           }, 1500);
         }}
       >

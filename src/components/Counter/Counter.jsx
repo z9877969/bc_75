@@ -16,28 +16,16 @@ const Button = ({ children, handleClick }) => {
   );
 };
 
-// const initialState2 = 25
-
 const Counter = () => {
-  const [theme, setTheme] = useState({ color: 'red' });
-  // const [age, setAge] = useState(15);
   const [count, setCount] = useState(0);
-  // const [error, setError] = useState(initialState2);
-
-  // useState(); // -> [v, setV]
-
-  // 0 -> 25 -> 15 -> 15
 
   console.log('RENDER');
 
   return (
     <Container className={s.container}>
       <h1 className={s.title}>Counter</h1>
-      <p className={s.count} style={{ color: theme.color }}>
-        {count}
-      </p>
+      <p className={s.count}>{count}</p>
       <div className={s.btnsWrapper}>
-        {/* <Button handleClick={() => setCount(count - 5)}>-5</Button> */}
         <button
           className={s.btn}
           type="button"
@@ -45,7 +33,13 @@ const Counter = () => {
         >
           -5
         </button>
-        <button className={s.btn} type="button" onClick={() => setCount(0)}>
+        <button
+          className={s.btn}
+          type="button"
+          onClick={() => {
+            setCount(0);
+          }}
+        >
           0
         </button>
         <Button value={15} handleClick={() => setCount(count + 15)}>
@@ -57,8 +51,3 @@ const Counter = () => {
 };
 
 export default Counter;
-
-// const arr = [1,2,5]
-// arr[1]
-
-// const [val1, val2, val3, ...rest] = arr
