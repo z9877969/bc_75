@@ -19,8 +19,6 @@ const Button = ({ children, handleClick }) => {
 const Counter = () => {
   const [count, setCount] = useState(0);
 
-  console.log('RENDER');
-
   return (
     <Container className={s.container}>
       <h1 className={s.title}>Counter</h1>
@@ -37,7 +35,7 @@ const Counter = () => {
           className={s.btn}
           type="button"
           onClick={() => {
-            setCount(0);
+            if (count !== 0) setCount(0);
           }}
         >
           0

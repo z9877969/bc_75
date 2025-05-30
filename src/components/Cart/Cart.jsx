@@ -3,16 +3,29 @@ import { MdDeleteForever, MdClose } from 'react-icons/md';
 
 import Button from '../Button/Button';
 import s from './Cart.module.css';
+import { useEffect } from 'react';
 
 const Cart = ({ products = [], isOpen = false, closeCart }) => {
   const handleSubmit = () => {
-    console.log('fetch data');
     closeCart(false);
   };
 
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.code === 'Escape') {
+        console.log('CartClose');
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, []);
+
   return (
     <div className={clsx(s.container, isOpen && s.isOpen)}>
-      <button className={s.btnClose} onClick={() => closeCart(false)}>
+      <button className={s.btnClose} onClick={closeCart}>
         <MdClose size={16} fill="#fff" />
       </button>
       <div className={s.productsList}>

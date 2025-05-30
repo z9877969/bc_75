@@ -19,7 +19,11 @@ const Header = ({ changePageType, openCart }) => {
             <NavItem handleClick={() => changePageType('counter')}>
               Counter
             </NavItem>
-            <NavItem handleClick={() => changePageType('products')}>
+            <NavItem
+              handleClick={() => {
+                changePageType('products');
+              }}
+            >
               Products
             </NavItem>
           </ul>

@@ -1,6 +1,6 @@
 // import { MdFavorite } from "react-icons/md"; /* <MdFavorite /> */
 // import { MdFavoriteBorder } from "react-icons/md"; /* <MdFavoriteBorder /> */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Container from '../Container/Container';
 import Button from '../Button/Button';
 import defaultImage from '../../assets/images/default-featured-image.png.jpg';
@@ -9,9 +9,24 @@ import s from './Products.module.css';
 import Cart from '../Cart/Cart';
 
 const Products = ({ isCartOpen, closeCart }) => {
-  const [cartProducts, setCartProducts] = useState({});
+  const [cartProducts, setCartProducts] = useState(
+    JSON.parse(localStorage.getItem('cart')) || {}
+  );
 
   const cartProductsList = Object.values(cartProducts);
+
+  useEffect(() => {
+    return () => {
+      console.log('isCartOPen :>> ', isCartOpen);
+      isCartOpen && closeCart(false);
+    };
+    // eslint-disable-next-line
+  }, [isCartOpen /* -> true */]);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartProducts));
+  }, [cartProducts]);
+
   return (
     <>
       <Container>
@@ -42,11 +57,13 @@ const Products = ({ isCartOpen, closeCart }) => {
           ))}
         </ul>
       </Container>
-      <Cart
-        isOpen={isCartOpen}
-        closeCart={closeCart}
-        products={cartProductsList}
-      />
+      {isCartOpen && (
+        <Cart
+          isOpen={isCartOpen}
+          closeCart={closeCart}
+          products={cartProductsList}
+        />
+      )}
     </>
   );
 };
