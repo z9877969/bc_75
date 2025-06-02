@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Button from '../Button/Button';
 import s from './TodoForm.module.css';
 
-const TodoForm = () => {
+const TodoForm = ({onSubmit}) => {
   const [form, setForm] = useState({
     date: '',
     descr: '',
@@ -24,7 +24,7 @@ const TodoForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = { ...form, isDone: false, id: uuidv4() };
-    console.log(JSON.stringify(formData, null, 2));
+    onSubmit(formData)
   };
 
   return (
