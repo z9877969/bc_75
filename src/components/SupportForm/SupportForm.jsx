@@ -1,7 +1,12 @@
+import { useId } from 'react';
+
 import Button from '../Button/Button';
 import s from './SupportForm.module.css';
 
 const SupportForm = () => {
+  const emailId = useId();
+  const messageId = useId();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, message } = e.target.elements;
@@ -14,14 +19,14 @@ const SupportForm = () => {
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>
-      <label className={s.label}>
+      <label htmlFor={emailId} className={s.label}>
         <span> Email </span>
-        <input className={s.input} type="text" name="email" />
       </label>
-      <label className={s.label}>
+      <input className={s.input} type="text" name="email" id={emailId} />
+      <label className={s.label} htmlFor={messageId}>
         <span> Message </span>
-        <input className={s.input} type="text" name="message" />
       </label>
+      <input className={s.input} type="text" name="message" id={messageId} />
       <Button type="submit" size="medium">
         Send
       </Button>
