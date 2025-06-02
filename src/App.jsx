@@ -2,12 +2,14 @@ import TodoForm from './components/TodoForm/TodoForm';
 import TodoList from './components/TodoList/TodoList';
 import SupportForm from './components/SupportForm/SupportForm';
 import Select from './components/Select/Select';
+import Radio from './components/Radio/Radio';
 
 function App() {
   return (
     <>
       {/* <SupportForm /> */}
-      <Select />
+      {/* <Select /> */}
+      <Radio />
       {/* <TodoForm /> */}
       {/* <TodoList /> */}
     </>
