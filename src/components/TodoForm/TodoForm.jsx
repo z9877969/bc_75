@@ -1,11 +1,31 @@
 // import clsx from 'clsx';
+import { useState } from 'react';
 import Button from '../Button/Button';
 import s from './TodoForm.module.css';
 
 const TodoForm = () => {
+  const [descr, setDescr] = useState('');
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+
+    console.log('value :>> ', value);
+    setDescr(value);
+  };
+
   return (
     <form className={s.form}>
-      <Button size='medium'>OK</Button>
+      <label className={s.label}>
+        <span> Description </span>
+        <input
+          className={s.input}
+          type="text"
+          value={descr}
+          name="descr"
+          onChange={handleChange}
+        />
+      </label>
+      <Button size="medium">OK</Button>
     </form>
   );
 };
