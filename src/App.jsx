@@ -6,6 +6,7 @@ import Radio from './components/Radio/Radio';
 import Checkbox from './components/Checkbox/Checkbox';
 import { todo } from './assets/todo';
 import { useState } from 'react';
+import Textarea from './components/Textarea/Textarea';
 
 function App() {
   const [todoList, setTodoList] = useState(todo);
@@ -26,13 +27,14 @@ function App() {
 
   return (
     <>
-      <TodoForm onSubmit={addTodo} />
+      {/* <TodoForm onSubmit={addTodo} />
       <Select setTheme={setTheme} />
-      <TodoList todoList={filteredTodoList  } onRemoveItem={removeTodo} />
-      {/* <SupportForm /> */}
+      <TodoList todoList={filteredTodoList  } onRemoveItem={removeTodo} /> */}
+      <SupportForm />
       {/* <Select /> */}
       {/* <Radio /> */}
       {/* <Checkbox /> */}
+      {/* <Textarea /> */}
     </>
   );
 }

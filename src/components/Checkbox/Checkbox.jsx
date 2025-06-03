@@ -1,3 +1,4 @@
+import { Field, Form, Formik } from 'formik';
 import { useId, useState } from 'react';
 
 const Checkbox = () => {
@@ -18,44 +19,32 @@ const Checkbox = () => {
   };
 
   return (
-    <div>
-      <div>
-        <label htmlFor={c1}>Card-1</label>
-        <input
-          type="checkbox"
-          name="card"
-          value={'card-1'}
-          id={c1}
-          checked={card.includes('card-1')}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor={c2}>Card-2</label>
-        <input
-          type="checkbox"
-          name="card"
-          value={'card-2'}
-          id={c2}
-          checked={card.includes('card-2')}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor={c3}>Card-3</label>
-        <input
-          type="checkbox"
-          name="card"
-          value={'card-3'}
-          id={c3}
-          checked={card.includes('card-3')}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="batton" disabled={card.length === 0}>
-        Share
-      </button>
-    </div>
+    <Formik
+      initialValues={{ card: [] }}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
+    >
+      {({ values }) => (
+        <Form>
+          <div>
+            <label htmlFor={c1}>Card-1</label>
+            <Field type="checkbox" name="card" value={'card-1'} id={c1} />
+          </div>
+          <div>
+            <label htmlFor={c2}>Card-2</label>
+            <Field type="checkbox" name="card" value={'card-2'} id={c2} />
+          </div>
+          <div>
+            <label htmlFor={c3}>Card-3</label>
+            <Field type="checkbox" name="card" value={'card-3'} id={c3} />
+          </div>
+          <button type="batton" disabled={values.card.length === 0}>
+            Share
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
 };
 

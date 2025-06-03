@@ -1,4 +1,6 @@
+import { Field, Form, Formik } from 'formik';
 import { useId, useState } from 'react';
+import Button from '../Button/Button';
 
 const Radio = () => {
   const [priority, setPriority] = useState('');
@@ -12,41 +14,30 @@ const Radio = () => {
   };
 
   return (
-    <>
-      <div>
-        <input
-          type="radio"
-          name="priority"
-          value="low"
-          id={lowId}
-          onChange={handleChange}
-          checked={'low' === priority}
-        />
-        <label htmlFor={lowId}>Low</label>
-      </div>
-      <div>
-        <input
-          type="radio"
-          name="priority"
-          value="medium"
-          id={mediumId}
-          onChange={handleChange}
-          checked={'medium' === priority}
-        />
-        <label htmlFor={mediumId}>Medium</label>
-      </div>
-      <div>
-        <input
-          type="radio"
-          name="priority"
-          value="high"
-          id={highId}
-          onChange={handleChange}
-          checked={'high' === priority}
-        />
-        <label htmlFor={highId}>High</label>
-      </div>
-    </>
+    <Formik
+      initialValues={{ priority: '' }}
+      onSubmit={(values, actions) => {
+        console.log(values);
+        actions.resetForm();
+        // actions.setFieldValue('priority', 'low');
+      }}
+    >
+      <Form>
+        <div>
+          <Field type="radio" name="priority" value="low" id={lowId} />
+          <label htmlFor={lowId}>Low</label>
+        </div>
+        <div>
+          <Field type="radio" name="priority" value="medium" id={mediumId} />
+          <label htmlFor={mediumId}>Medium</label>
+        </div>
+        <div>
+          <Field type="radio" name="priority" value="high" id={highId} />
+          <label htmlFor={highId}>High</label>
+        </div>
+        <Button type="submit">Send</Button>
+      </Form>
+    </Formik>
   );
 };
 
