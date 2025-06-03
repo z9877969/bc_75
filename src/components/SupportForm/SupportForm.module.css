@@ -22,7 +22,6 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: -10px;
-
 }
 .labelWrapper:not(:last-child) {
   margin-bottom: 10px;
@@ -76,6 +75,12 @@
   &:not(:last-child) {
     margin-right: 15px;
   }
+}
+
+.errorMessage {
+  color: red;
+  font-weight: bold;
+  font-size: 0.6em;
 }
 
 .submit {

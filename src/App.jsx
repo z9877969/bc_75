@@ -27,10 +27,10 @@ function App() {
 
   return (
     <>
-      {/* <TodoForm onSubmit={addTodo} />
-      <Select setTheme={setTheme} />
+      <TodoForm onSubmit={addTodo} />
+      {/* <Select setTheme={setTheme} />
       <TodoList todoList={filteredTodoList  } onRemoveItem={removeTodo} /> */}
-      <SupportForm />
+      {/* <SupportForm onSubmit={addTodo} /> */}
       {/* <Select /> */}
       {/* <Radio /> */}
       {/* <Checkbox /> */}
