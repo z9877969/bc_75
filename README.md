@@ -1,22 +1,22 @@
-# Module_03. lesson_2
+# Module_04. lesson_1
 
-# _ Formik _
+# _ HTTP _
 
-## 1. Бібліотека Formik.
+[api](https://sound-wave.b.goit.study/api-docs/#/Artist/get_artists)
 
-## 2. Форма.
+## 1. HTTP запити.
+`-` fetch | axios \ 
+`-` запити через user-actions | запити на ефектах
 
-`-` Контейнер форми: Formik | Form \
-`-` Поля форми: Field \
-`-` Стилізація форми \
-`-` Початкове значення \
-`-` Відправка форми \
-`-` Елементи форми: label | legend | fieldset \
-`-` Типи полів: text | email | textarea <Field as='textarea' rows='5' /> | radio | checkbox
-`-` Селект
 
-## 3. Валідація
-`-` [Yup](https://www.npmjs.com/package/yup)
+## 2. Обробка даних.
+`-` успішний результат \
+`-` індикатор завантаження \
+`-` обробка помилки
 
-## 4. Помилка валідації
-`-` <ErrorMessage name="descr" component="span" />
+## 3. Поділ відповідальності
+`-` сервіси
+
+## 4. Пошук через форму
+
+## 5. *Пагінатор
