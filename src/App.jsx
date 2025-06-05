@@ -17,6 +17,22 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const getArtists = async (search) => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const { data } = await axios.get(
+        `https://sound-wave.b.goit.study/api/artists?name=${search}`
+      );
+
+      setArtists(data.artists);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,7 +57,7 @@ function App() {
   return (
     <>
       {isLoading && <Loader />}
-      <SearchForm />
+      <SearchForm onSubmit={getArtists} />
       {error ? (
         <ErrorMessage error={error} />
       ) : (
