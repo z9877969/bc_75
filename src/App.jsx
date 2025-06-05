@@ -72,7 +72,7 @@ function App() {
           paddingBottom: '1rem',
         }}
       >
-        {totalArtists > 0 && page * 6 <= totalArtists && (
+        {totalArtists > 0 && totalArtists > page * 6 && (
           <Button
             size="large"
             variant={'warn'}
