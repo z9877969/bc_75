@@ -1,8 +1,9 @@
-import ArtistsList from './components/ArtistsList/ArtistsList';
 // import artistsData from './assets/artists.json';
-import SearchForm from './components/SearchForm/SearchForm';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import debounce from 'lodash.debounce';
+import SearchForm from './components/SearchForm/SearchForm';
+import ArtistsList from './components/ArtistsList/ArtistsList';
 
 const Loader = () => {
   return <h1>Loading...</h1>;
@@ -22,7 +23,9 @@ function App() {
       setIsLoading(true);
       setError(null);
       const { data } = await axios.get(
-        `https://sound-wave.b.goit.study/api/artists?name=${search}`
+        `https://sound-wave.b.goit.study/api/artists${
+          search ? `?name=${search}` : ''
+        }`
       );
 
       setArtists(data.artists);
@@ -57,7 +60,13 @@ function App() {
   return (
     <>
       {isLoading && <Loader />}
-      <SearchForm onSubmit={getArtists} />
+      <input
+        type="text"
+        onChange={debounce((e) => {
+          getArtists(e.target.value);
+        }, 300)}
+      />
+      {/* <SearchForm onSubmit={getArtists} /> */}
       {error ? (
         <ErrorMessage error={error} />
       ) : (
