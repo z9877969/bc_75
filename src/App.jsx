@@ -1,17 +1,37 @@
 import ArtistsList from './components/ArtistsList/ArtistsList';
-import artistsData from './assets/artists.json';
+// import artistsData from './assets/artists.json';
 import SearchForm from './components/SearchForm/SearchForm';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+const Loader = () => {
+  return <h1>Loading...</h1>;
+};
+
+const ErrorMessage = ({ error }) => {
+  return <h2>{error}</h2>;
+};
 
 function App() {
+  const [artists, setArtists] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(
-        'https://sound-wave.b.goit.study/api/artists'
-      );
+      try {
+        setIsLoading(true);
+        setError(null);
+        const { data } = await axios.get(
+          'https://sound-wave.b.goit.study/api/artists'
+        );
 
-      console.log(data);
+        setArtists(data.artists);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchData();
   }, []);
@@ -20,21 +40,13 @@ function App() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={async () => {
-          const { data } = await axios.get(
-            'https://sound-wave.b.goit.study/api/artists'
-          );
-
-          console.log('data :>> ', data);
-        }}
-      >
-        Get Data
-      </button>
-      <ArtistsList artistsList={artistsData} />
-      {/* <SearchForm />
-       */}
+      {isLoading && <Loader />}
+      <SearchForm />
+      {error ? (
+        <ErrorMessage error={error} />
+      ) : (
+        <ArtistsList artistsList={artists} />
+      )}
     </>
   );
 }
