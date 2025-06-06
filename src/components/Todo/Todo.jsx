@@ -3,10 +3,11 @@ import TodoForm from '../TodoForm/TodoForm';
 import TodoList from '../TodoList/TodoList';
 import Select from '../Select/Select';
 import { todo } from '../../assets/todo';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const Todo = () => {
   const [todoList, setTodoList] = useState(todo);
-  const [priority, setPriority] = useState('all');
+  const [priority, setPriority] = useLocalStorage('priority', 'all');
 
   const addTodo = (formData) => {
     setTodoList([...todoList, formData]);

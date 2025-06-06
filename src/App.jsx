@@ -8,10 +8,10 @@ function App() {
   return (
     <>
       <Header />
-      {/* <Todo /> */}
+      <Todo />
       {/* <Artists /> */}
       {/* <ComponentUseMemoExample /> */}
-      <ComponentUseRefExample />
+      {/* <ComponentUseRefExample /> */}
     </>
   );
 }

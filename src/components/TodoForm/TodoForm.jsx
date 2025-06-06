@@ -1,11 +1,12 @@
-import { useId, useState } from 'react';
+import { useId } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import clsx from 'clsx';
 import Button from '../Button/Button';
 import s from './TodoForm.module.css';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
-const TodoForm = ({onSubmit}) => {
-  const [form, setForm] = useState({
+const TodoForm = ({ onSubmit }) => {
+  const [form, setForm] = useLocalStorage('form', {
     date: '',
     descr: '',
     priority: '',
@@ -24,7 +25,7 @@ const TodoForm = ({onSubmit}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = { ...form, isDone: false, id: uuidv4() };
-    onSubmit(formData)
+    onSubmit(formData);
   };
 
   return (
