@@ -1,17 +1,22 @@
-import { useId } from 'react';
+import { useContext, useId } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import clsx from 'clsx';
 import Button from '../Button/Button';
 import s from './TodoForm.module.css';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { TodoContext } from '../../context/TodoContext';
+import { HelloContext } from '../../context/HelloContext';
 
-const TodoForm = ({ onSubmit }) => {
+const TodoForm = () => {
   const [form, setForm] = useLocalStorage('form', {
     date: '',
     descr: '',
     priority: '',
     theme: '',
   });
+
+  const { addTodo } = useContext(TodoContext);
+  const { changeText } = useContext(HelloContext);
 
   const lowId = useId();
   const mediumId = useId();
@@ -25,11 +30,14 @@ const TodoForm = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = { ...form, isDone: false, id: uuidv4() };
-    onSubmit(formData);
+    addTodo(formData);
   };
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>
+      <button type="button" onClick={changeText}>
+        changeText
+      </button>
       <label className={s.label}>
         <span> Date </span>
         <input
