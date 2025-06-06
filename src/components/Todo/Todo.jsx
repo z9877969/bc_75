@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import TodoForm from '../TodoForm/TodoForm';
 import TodoList from '../TodoList/TodoList';
 import Select from '../Select/Select';
@@ -16,10 +16,11 @@ const Todo = () => {
     setTodoList(todoList.filter((el) => el.id !== id));
   };
 
-  const filteredTodoList =
-    priority === 'all'
+  const filteredTodoList = useMemo(() => {
+    return priority === 'all'
       ? todoList
       : todoList.filter((todo) => todo.priority === priority);
+  }, [todoList, priority]);
 
   return (
     <>

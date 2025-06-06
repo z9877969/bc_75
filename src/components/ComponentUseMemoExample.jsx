@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Button from './Button/Button';
 
 const calculateBigData = (multiplier) => {
@@ -12,14 +12,19 @@ const calculateBigData = (multiplier) => {
     .map((el, i) => (i + 1) * multiplier);
 };
 
-const UseMemo = () => {
+const ComponentUseMemoExample = () => {
   const [theme, setTheme] = useState('light');
   const [multiplier, setMultiplier] = useState(1);
 
   console.time();
-  //   const data = calculateBigData(multiplier);
-  const data = [];
+  const data = useMemo(() => {
+    return calculateBigData(multiplier);
+  }, [multiplier]);
   console.timeEnd();
+
+  // useEffect(() => {
+  //   console.log('multiplier: ', multiplier);
+  // }, [multiplier]);
 
   return (
     <div style={{ width: 'fit-content', margin: '0 auto' }}>
@@ -42,4 +47,17 @@ const UseMemo = () => {
   );
 };
 
-export default UseMemo;
+export default ComponentUseMemoExample;
+
+/* const useM = (fn, depArr) => {
+  let dataCash;
+  let depCash;
+  if (JSON.stringify(depArr) === depCash) {
+    return dataCash;
+  } else {
+    const result = fn();
+    dataCash = result;
+    depCash = JSON.stringify(depArr);
+    return result;
+  }
+}; */

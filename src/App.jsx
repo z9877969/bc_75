@@ -1,17 +1,20 @@
 import Header from './components/Header/Header';
 import Todo from './components/Todo/Todo';
 import Artists from './components/Artists/Artists';
-import UseMemo from './components/UseMemo';
+import ComponentUseMemoExample from './components/ComponentUseMemoExample';
 
 function App() {
   return (
     <>
       <Header />
-      <UseMemo />
-      {/* <Todo /> */}
+      {/* <ComponentUseMemoExample /> */}
+      <Todo />
       {/* <Artists /> */}
     </>
   );
 }
 
 export default App;
+
+
+// Comp() | lexical env -> Comp() lexical env -> Comp()
