@@ -1,4 +1,4 @@
-import NavItem from '../NavItem/NavItem';
+import { NavLink } from 'react-router-dom';
 import Container from '../Container/Container';
 import s from './Header.module.css';
 
@@ -8,8 +8,12 @@ const Header = () => {
       <Container className={s.container}>
         <nav className={s.nav}>
           <ul className={s.list}>
-            <NavItem>Todo</NavItem>
-            <NavItem>Artists</NavItem>
+            <a className={s.link} href="#">
+              Home
+            </a>
+            <a className={s.link} href="#">
+              Artists
+            </a>
           </ul>
         </nav>
       </Container>

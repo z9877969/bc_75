@@ -1,9 +1,10 @@
 import s from './ArtistsList.module.css';
+import artistsListJson from '../../assets/artists.json';
 
-const ArtistsList = ({ artistsList = [] }) => {
+const ArtistsList = ({ artistsList = artistsListJson }) => {
   return (
     <ul className={s.container}>
-      {artistsList.map(({ strArtist, strBiographyEN, strArtistThumb, _id }) => (
+      {artistsList.map(({ strArtist, strArtistThumb, _id }) => (
         <li key={_id} className={s.item}>
           <img
             src={strArtistThumb}
@@ -11,7 +12,6 @@ const ArtistsList = ({ artistsList = [] }) => {
             height="350"
           />
           <p className={s.name}>{strArtist}</p>
-          <p className={s.descr}>{strBiographyEN}</p>
         </li>
       ))}
     </ul>
