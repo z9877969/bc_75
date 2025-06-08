@@ -4,7 +4,7 @@
 
 
 ## 1. Маршрутизація.
-`-` структура url \
+`-` структура url https://sound-wave.b.goit.study/api/artists/65ada227af9f6d155db46908/albums \
 `-` історія навігації history \
 `-` маршрутизація react-router-dom
 
