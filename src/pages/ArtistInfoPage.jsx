@@ -3,6 +3,7 @@ import { Link, Outlet, useParams } from 'react-router-dom';
 import Container from '../components/Container/Container';
 import { getArtistsInfoApi } from '../services/api';
 import ArtistInfo from '../components/ArtistInfo/ArtistInfo';
+import ArtistsInfoNav from '../components/ArtistsInfoNav/ArtistsInfoNav';
 
 const ArtistsInfoPage = () => {
   const { artistId } = useParams();
@@ -21,17 +22,13 @@ const ArtistsInfoPage = () => {
   return (
     <Container>
       {artistInfo && <ArtistInfo artistInfo={artistInfo} />}
-      <Link to="descr">Description</Link>
-      <Link to="reviews">Reviews</Link>
-      <Link to="biography">Biography</Link>
-      <Link to="albums">Albums</Link>
+      <ArtistsInfoNav />
       <Outlet
         context={{
           biography: artistInfo?.strBiographyEN,
           albums: artistInfo?.albumsList,
         }}
       />
-      {/* <h2>Descr component</h2> */}
     </Container>
   );
 };

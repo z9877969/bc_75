@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Container from '../components/Container/Container';
-import { getArtistsApi } from '../services/api';
 import ArtistsList from '../components/ArtistsList/ArtistsList';
+import SearchForm from '../components/SearchForm/SearchForm';
+import { getArtistsApi } from '../services/api';
 
 const ArtistsPage = () => {
   const [artists, setArtists] = useState([]);
@@ -10,7 +10,6 @@ const ArtistsPage = () => {
   useEffect(() => {
     const getArtists = async () => {
       const data = await getArtistsApi();
-      console.log('data :>> ', data);
       setArtists(data.artists);
     };
 
@@ -19,15 +18,8 @@ const ArtistsPage = () => {
 
   return (
     <Container>
-      <h1>ArtistsPage</h1>
+      <SearchForm />
       <ArtistsList artistsList={artists} />
-      {/* <ul>
-        {artists.map((artist) => (
-          <li key={artist._id}>
-            <Link to={`/info/${artist._id}`}>{artist.strArtist}</Link>
-          </li>
-        ))}
-      </ul> */}
     </Container>
   );
 };

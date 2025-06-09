@@ -1,29 +1,32 @@
-# Module_05. lesson_1
+# Module_05. lesson_2
 
-# _ Router _
+# _ Navigation _
 
+## 1. Програмна навігація.
+`-` useNavigate: автоматичний редірект з затримкою \
+`-` useNavigate: редірект після натискання на кнопку \
+`-` Navigate: системний редірект - редірект на маршруті
 
-## 1. Маршрутизація.
-`-` структура url https://sound-wave.b.goit.study/api/artists/65ada227af9f6d155db46908/albums \
-`-` історія навігації history \
-`-` маршрутизація react-router-dom
+## 2. Рядок запиту.
+`-` https://our-amzing-app.com/artists?limit=10&page=1&name=bo&genre=Rock
 
-## 2. BrowserRouter.
+## 3. Отримання параметрів.
+`-` search.get(key)
 
-## 3. Побудова маршрутів
-`-` Routes \
-`-` Route \ 
-`-` NotFound
+## 4. Зміна значень параметрів.
+`-` search.set(key, value)
 
-## 4. Навігація
-`-` Link \
-`-` NavLink - має стилі акценту
+## 5. Відстеження змін
+`-` кнопка LoadMore
+`-` форма пошуку
 
-## 5. Url параметри (динамічні параметри маршруту)
-`-` NavLink - має стилі акценту
+## 6. Об'єкт місцезнаходження - Location
 
-## 6. Вкладені маршрути
-`-` відносні маршрути \
-`-` <Outlet />
+## 7. location.state
+`-` кнопка Goback
 
-## 6. Деплой на Vercel
+## 8. Розподіл коду - code spliting
+`-` поділ за маршрутами | поділ за компонентами \
+`-` Lazy | Suspense
+`-` SharedLayout
+
