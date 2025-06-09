@@ -1,6 +1,7 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Container from '../Container/Container';
 import s from './Header.module.css';
+import clsx from 'clsx';
 
 const Header = () => {
   return (
@@ -8,12 +9,30 @@ const Header = () => {
       <Container className={s.container}>
         <nav className={s.nav}>
           <ul className={s.list}>
-            <a className={s.link} href="#">
-              Home
-            </a>
-            <a className={s.link} href="#">
-              Artists
-            </a>
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) => clsx(s.link, isActive && s.accent)}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/about"
+                className={({ isActive }) => clsx(s.link, isActive && s.accent)}
+              >
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/artists"
+                className={({ isActive }) => clsx(s.link, isActive && s.accent)}
+              >
+                Artists
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </Container>
