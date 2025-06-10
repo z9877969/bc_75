@@ -6,7 +6,7 @@ const SearchForm = ({ onSubmit }) => {
   const handleSabmit = (e) => {
     e.preventDefault();
     const { value } = e.target.elements.searchText;
-    onSubmit('search', value);
+    onSubmit({ search: value, page: 1 });
   };
 
   return (

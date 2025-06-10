@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import queryString from 'query-string';
 import Container from '../components/Container/Container';
 import ArtistsList from '../components/ArtistsList/ArtistsList';
 import SearchForm from '../components/SearchForm/SearchForm';
@@ -9,20 +10,37 @@ import Button from '../components/Button/Button';
 // const searchParams = new URLSearchParams()
 
 const ArtistsPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [artists, setArtists] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  // const [searchParams, setSearchParams] = useSearchParams();
 
-  const page = searchParams.get('page'); // string "2"
-  const limit = searchParams.get('limit');
-  const search = searchParams.get('search');
+  const { page, limit, search } = queryString.parse(location.search);
 
-  const updateSearchParams = (key, value) => {
-    const searchParamsInstance = new URLSearchParams(searchParams);
-
-    searchParamsInstance.set(key, value);
-
-    setSearchParams(searchParamsInstance);
+  const updateSearchParams = ({
+    page: pageParam,
+    limit: limitParam,
+    search: searchParam,
+  }) => {
+    const searchStr = queryString.stringify({
+      page: pageParam ? pageParam : page,
+      limit: limitParam ? limitParam : limit,
+      ...(searchParam && { search: searchParam }),
+    });
+    navigate({ ...location, search: searchStr });
   };
+
+  // const page = searchParams.get('page'); // string "2"
+  // const limit = searchParams.get('limit');
+  // const search = searchParams.get('search');
+
+  // const updateSearchParams = (key, value) => {
+  //   const searchParamsInstance = new URLSearchParams(searchParams);
+
+  //   searchParamsInstance.set(key, value);
+
+  //   setSearchParams(searchParamsInstance);
+  // };
 
   useEffect(() => {
     const getArtists = async () => {
@@ -42,7 +60,7 @@ const ArtistsPage = () => {
           name="limit"
           value={limit}
           onChange={(e) => {
-            updateSearchParams('limit', e.target.value);
+            updateSearchParams({ limit: e.target.value });
           }}
         >
           <option value="6">6</option>
@@ -55,7 +73,8 @@ const ArtistsPage = () => {
         type="button"
         size="large"
         handleClick={() => {
-          updateSearchParams('page', Number(page) + 1); // 2 + 1 -> 3
+          // updateSearchParams('page', Number(page) + 1); // 2 + 1 -> 3
+          updateSearchParams({ page: Number(page) + 1 });
         }}
       >
         LoadMore
