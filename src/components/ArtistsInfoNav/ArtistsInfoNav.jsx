@@ -1,13 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
 
 const ArtistsInfoNav = () => {
+  const location = useLocation();
+
+  console.log('location.state :>> ', location.state);
   return (
     <ul>
       <li>
-        <Link to="biography">Biography</Link>
+        <Link to="biography" state={location.state}>
+          Biography
+        </Link>
       </li>
       <li>
-        <Link to="albums">Albums</Link>
+        <Link to="albums" state={location.state}>
+          Albums
+        </Link>
       </li>
     </ul>
   );

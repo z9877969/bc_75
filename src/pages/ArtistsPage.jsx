@@ -27,7 +27,7 @@ const ArtistsPage = () => {
       limit: limitParam ? limitParam : limit,
       ...(searchParam && { search: searchParam }),
     });
-    navigate({ ...location, search: searchStr });
+    navigate({ ...location, search: searchStr }, { state: 'saved data' });
   };
 
   // const page = searchParams.get('page'); // string "2"
