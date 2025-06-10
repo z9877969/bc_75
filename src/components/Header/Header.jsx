@@ -27,7 +27,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/artists"
+                to="/artists?page=1&limit=6"
                 className={({ isActive }) => clsx(s.link, isActive && s.accent)}
               >
                 Artists

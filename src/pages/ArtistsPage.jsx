@@ -12,8 +12,9 @@ const ArtistsPage = () => {
   const [artists, setArtists] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const page = searchParams.get('page');
+  const page = searchParams.get('page'); // string "2"
   const limit = searchParams.get('limit');
+  const search = searchParams.get('search');
 
   const updateSearchParams = (key, value) => {
     const searchParamsInstance = new URLSearchParams(searchParams);
@@ -25,16 +26,16 @@ const ArtistsPage = () => {
 
   useEffect(() => {
     const getArtists = async () => {
-      const data = await getArtistsApi({ page, limit });
+      const data = await getArtistsApi({ page, limit, search });
       setArtists(data.artists);
     };
 
     getArtists();
-  }, [page, limit]);
+  }, [page, limit, search]);
 
   return (
     <Container>
-      <SearchForm />
+      <SearchForm onSubmit={updateSearchParams} />
       <label htmlFor="">
         Per page:
         <select
@@ -54,7 +55,7 @@ const ArtistsPage = () => {
         type="button"
         size="large"
         handleClick={() => {
-          updateSearchParams('page', Number(page) + 1);
+          updateSearchParams('page', Number(page) + 1); // 2 + 1 -> 3
         }}
       >
         LoadMore
