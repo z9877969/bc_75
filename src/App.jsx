@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -25,8 +25,9 @@ function App() {
           <Route path="biography" element={<ArtistBiography />} />
           <Route path="albums" element={<ArtistAlbums />} />
         </Route>
+        <Route path="/notfound" element={<NotFoundPage />} />
 
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/notfound" />} />
       </Routes>
     </>
   );

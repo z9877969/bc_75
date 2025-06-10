@@ -1,9 +1,17 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const NotFoundPage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate('/');
+    }, 3000);
+  });
+
   return (
     <>
-      <Link to="/">BackToHome</Link>
       <h1>Not found</h1>
     </>
   );

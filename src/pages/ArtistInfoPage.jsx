@@ -1,19 +1,25 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import Container from '../components/Container/Container';
 import { getArtistsInfoApi } from '../services/api';
 import ArtistInfo from '../components/ArtistInfo/ArtistInfo';
 import ArtistsInfoNav from '../components/ArtistsInfoNav/ArtistsInfoNav';
 
 const ArtistsInfoPage = () => {
+  const navigate = useNavigate();
   const { artistId } = useParams();
 
   const [artistInfo, setArtistInfo] = useState(null);
 
   useEffect(() => {
     const getArtistsInfo = async () => {
-      const artistData = await getArtistsInfoApi(artistId);
-      setArtistInfo(artistData);
+      try {
+        const artistData = await getArtistsInfoApi(artistId);
+        setArtistInfo(artistData);
+      } catch (error) {
+        console.log(error);
+        navigate('/notfound');
+      }
     };
 
     getArtistsInfo();

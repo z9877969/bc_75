@@ -1,25 +1,64 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Container from '../components/Container/Container';
 import ArtistsList from '../components/ArtistsList/ArtistsList';
 import SearchForm from '../components/SearchForm/SearchForm';
 import { getArtistsApi } from '../services/api';
+import Button from '../components/Button/Button';
+
+// const searchParams = new URLSearchParams()
 
 const ArtistsPage = () => {
   const [artists, setArtists] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const page = searchParams.get('page');
+  const limit = searchParams.get('limit');
+
+  const updateSearchParams = (key, value) => {
+    const searchParamsInstance = new URLSearchParams(searchParams);
+
+    searchParamsInstance.set(key, value);
+
+    setSearchParams(searchParamsInstance);
+  };
 
   useEffect(() => {
     const getArtists = async () => {
-      const data = await getArtistsApi();
+      const data = await getArtistsApi({ page, limit });
       setArtists(data.artists);
     };
 
     getArtists();
-  }, []);
+  }, [page, limit]);
 
   return (
     <Container>
       <SearchForm />
+      <label htmlFor="">
+        Per page:
+        <select
+          name="limit"
+          value={limit}
+          onChange={(e) => {
+            updateSearchParams('limit', e.target.value);
+          }}
+        >
+          <option value="6">6</option>
+          <option value="8">8</option>
+          <option value="10">10</option>
+        </select>
+      </label>
       <ArtistsList artistsList={artists} />
+      <Button
+        type="button"
+        size="large"
+        handleClick={() => {
+          updateSearchParams('page', Number(page) + 1);
+        }}
+      >
+        LoadMore
+      </Button>
     </Container>
   );
 };
