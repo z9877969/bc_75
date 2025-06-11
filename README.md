@@ -1,20 +1,26 @@
-# Module_05. lesson_2
+# Module_06. lesson_1
 
-# _ Navigation _
+# _ Redux.Redux-toolkit _
 
-## 1. Програмна навігація.
-`-` useNavigate: автоматичний редірект з затримкою \
-`-` useNavigate: редірект після натискання на кнопку \
-`-` Navigate: системний редірект - редірект на маршруті
+## 1. Менеджер стану.
+`-` [без Redux/з Redux](https://miro.medium.com/v2/resize:fit:1400/1*JAWge61qDCWcoARlKgdNVQ.png)
+`-` [принцип роботи](https://paulonteri.com/images/thoughts/react-redux/reduxdataflowdiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
 
-## 2. Рядок запиту.
-`-` https://our-amzing-app.com/artists?limit=10&page=1&name=bo&genre=Rock
+## 2. Redux-toolkit.
+`-` store
+`-` redux devtools
+`-` підписка на store
 
-## 3. Отримання параметрів.
-`-` search.get(key)
+## 3. Екшени.
+`-` створення
+`-` відправлення
 
-## 4. Зміна значень параметрів.
-`-` search.set(key, value)
+
+## 4. Редюсери.
+`-` лише обчислюють новий стан
+`-` не мутують стан - працюють лише з копією
+`-` не виконують жодних побічних ефектів
+
 
 ## 5. Відстеження змін
 `-` кнопка LoadMore

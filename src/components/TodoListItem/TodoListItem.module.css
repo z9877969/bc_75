@@ -1,0 +1,54 @@
+/* todo item */
+.toDoItem {
+  padding: 10px;
+  color: rgb(61, 56, 10);
+  box-shadow: 0 0 4px 4px #00000060;
+  border-radius: 8px;
+
+  &.green {
+    background-color: green;
+  }
+  &.red {
+    background-color: red;
+  }
+  &.orange {
+    background-color: orange;
+  }
+}
+
+.date,
+.title,
+.descr,
+.priority {
+  padding: 5px;
+}
+
+.date,
+.title,
+.priority,
+.descr {
+  &.isDone {
+    text-decoration: line-through;
+  }
+}
+
+.todoBtn {
+  display: block;
+  width: 45%;
+  padding: 6px 25px;
+  margin: 0 auto;
+  background-color: rgb(233, 227, 228);
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  fill: darkblue;
+}
