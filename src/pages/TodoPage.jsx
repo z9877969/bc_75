@@ -3,7 +3,7 @@ import TodoForm from '../components/TodoForm/TodoForm';
 import TodoFilter from '../components/TodoFilter/TodoFilter';
 import TodoList from '../components/TodoList/TodoList';
 
-const AboutPage = () => {
+const TodoPage = () => {
   return (
     <Container>
       <TodoForm />
@@ -13,4 +13,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default TodoPage;

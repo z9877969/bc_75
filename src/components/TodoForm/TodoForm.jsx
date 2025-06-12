@@ -3,8 +3,14 @@ import { v4 as uuidv4 } from 'uuid';
 import clsx from 'clsx';
 import Button from '../Button/Button';
 import s from './TodoForm.module.css';
+import { useDispatch } from 'react-redux';
+import { addTodoAction } from '../../redux/todo/todoActions';
+
+console.log('addTodoAction() :>> ', addTodoAction());
 
 const TodoForm = () => {
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState({
     date: '',
     descr: '',
@@ -23,7 +29,7 @@ const TodoForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = { ...form, isDone: false, id: uuidv4() };
-    console.log(formData);
+    dispatch(addTodoAction(formData));
   };
 
   return (

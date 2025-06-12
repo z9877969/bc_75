@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import countReducer from './count/countReducer';
+import todoReducer from './todo/todoReducer';
 
-const todoReducer = (state = [], action) => state;
 const aReducer = (state = 'qwe', action) => state;
 
 export const store = configureStore({

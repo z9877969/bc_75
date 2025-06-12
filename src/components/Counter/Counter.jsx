@@ -8,9 +8,7 @@ import {
 } from '../../redux/count/countActions';
 
 const Counter = () => {
-  const count = useSelector((state) => {
-    return state.count;
-  });
+  const count = useSelector((state) => state.count);
 
   const dispatch = useDispatch();
 

@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, /* useEffect, useState  */} from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import SharedLayot from './components/SharedLayout/SharedLayout';
 
@@ -20,3 +20,20 @@ function App() {
 }
 
 export default App;
+
+// const Foo = (params) => {
+//   const [data, setData] = useState([]);
+//   const [period, setPeriod] = useState('week');
+
+//   useEffect(() => {
+//     console.log('fetch data by period-', period);
+//     const fetchedData = fetch('/', period);
+//     setData(fetchedData);
+//   }, [period]);
+//   return (
+//     <>
+//       <h2>Filter period - {period}</h2>
+//       <h2>Stats - {data}</h2>
+//     </>
+//   );
+// };

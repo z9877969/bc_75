@@ -1,7 +1,13 @@
 import clsx from 'clsx';
 import s from './TodoListItem.module.css';
+import { useDispatch } from 'react-redux';
+import {
+  removeTodoAction,
+  updateTodoStatusAction,
+} from '../../redux/todo/todoActions';
 
 const TodoListItem = ({ id, theme, isDone, date, priority, descr }) => {
+  const dispatch = useDispatch();
   return (
     <li key={id} className={clsx(s.toDoItem, s[theme])}>
       <p className={clsx(s.date, isDone && s.isDone)}>{date}</p>
@@ -14,11 +20,18 @@ const TodoListItem = ({ id, theme, isDone, date, priority, descr }) => {
           type="checkbox"
           name="status"
           checked={isDone}
-          onChange={() => {}}
+          onChange={() => {
+            dispatch(updateTodoStatusAction(id));
+          }}
         />
         Done
       </label>
-      <button className={s.todoBtn}>Remove</button>
+      <button
+        className={s.todoBtn}
+        onClick={() => dispatch(removeTodoAction(id))}
+      >
+        Remove
+      </button>
     </li>
   );
 };
