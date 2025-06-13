@@ -1,15 +1,17 @@
 import s from './TodoList.module.css';
 import TodoListItem from '../TodoListItem/TodoListItem';
 import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 
 const TodoList = () => {
   const todoList = useSelector((state) => state.todo.items);
   const filter = useSelector((state) => state.todo.filter);
 
-  const filteredTodo =
-    filter === 'all'
+  const filteredTodo = useMemo(() => {
+    return filter === 'all'
       ? todoList
       : todoList.filter((todo) => todo.priority === filter);
+  }, [filter, todoList]);
 
   return (
     <ul className={s.container}>
