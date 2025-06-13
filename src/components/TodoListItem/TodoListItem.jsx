@@ -1,10 +1,13 @@
 import clsx from 'clsx';
 import s from './TodoListItem.module.css';
 import { useDispatch } from 'react-redux';
+import // removeTodoAction,
+// updateTodoStatusAction,
+'../../redux/todo/todoActions';
 import {
   removeTodoAction,
   updateTodoStatusAction,
-} from '../../redux/todo/todoActions';
+} from '../../redux/todo/todoSlice';
 
 const TodoListItem = ({ id, theme, isDone, date, priority, descr }) => {
   const dispatch = useDispatch();

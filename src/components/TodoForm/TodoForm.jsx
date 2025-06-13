@@ -4,9 +4,8 @@ import clsx from 'clsx';
 import Button from '../Button/Button';
 import s from './TodoForm.module.css';
 import { useDispatch } from 'react-redux';
-import { addTodoAction } from '../../redux/todo/todoActions';
-
-console.log('addTodoAction() :>> ', addTodoAction());
+// import { addTodoAction } from '../../redux/todo/todoActions';
+import { addTodoAction } from '../../redux/todo/todoSlice';
 
 const TodoForm = () => {
   const dispatch = useDispatch();
