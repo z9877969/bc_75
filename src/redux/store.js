@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import countReducer from './count/countReducer';
+// import countReducer from './count/countReducer';
+import {countReducer} from './count/countSlice';
 import todoReducer from './todo/todoReducer';
 
 export const store = configureStore({

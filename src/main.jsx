@@ -7,10 +7,6 @@ import App from './App.jsx';
 import './index.scss';
 import { store } from './redux/store.js';
 
-console.log('store :>> ', store);
-
-console.log('store.getState() :>> ', store.getState());
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
