@@ -40,3 +40,4 @@ const TodoListItem = ({ id, theme, isDone, date, priority, descr }) => {
 };
 
 export default TodoListItem;
+/* id, date, theme, isDone, priority, descr */

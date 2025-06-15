@@ -1,12 +1,20 @@
-# Module_06. lesson_2
+# Module_07. lesson_1
 
-# _ Redux.Redux-toolkit _
+# _ Async redux _
 
-## 1. Слайс.
+[mockapi](https://mockapi.io/projects/684f0d7cf0c9c9848d29f4dd)
 
-## 2. createSlice.
+## 1. Операції.
+`-` виконання екшенів pending | success | reject
+`-` redux-thunk - вбудований механізм для роботи з операціями 
 
-`-` initialState \
-`-` reducers \
-`-` slice.reducer \
-`-` slice.actions
+## 2. createAsyncThunk.
+`-` абстракція над операціями
+
+## 3. Todo CRUD
+```
+C - create
+R - read
+U - update
+D - delete
+```
