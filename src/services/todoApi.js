@@ -16,7 +16,6 @@ export const getTodoApi = async () => {
   return data;
 };
 
-/* https://684f0d7cf0c9c9848d29f4dc.mockapi.io/api/todo/22 */
 export const removeTodoApi = async (id) => {
   const { data } = await todoApi.delete(`todo/${id}`);
 

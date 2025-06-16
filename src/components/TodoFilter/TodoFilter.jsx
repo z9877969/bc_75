@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import s from './TodoFilter.module.css';
-// import { changeTodoFilterAction } from '../../redux/todo/todoActions';
 import { changeFilterAction } from '../../redux/todo/todoSlice';
+import s from './TodoFilter.module.css';
 
 const TodoFilter = () => {
   const dispatch = useDispatch();

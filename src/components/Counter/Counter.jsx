@@ -13,8 +13,6 @@ const Counter = () => {
 
   const dispatch = useDispatch();
 
-  console.log('count :>> ', count);
-
   return (
     <Container className={s.container}>
       <p className={s.count}>{count}</p>
@@ -22,12 +20,7 @@ const Counter = () => {
         <button
           className={s.btn}
           type="button"
-          onClick={
-            () =>
-              dispatch(
-                incrementAction(25)
-              ) /* {type: 'count/incrementAction', payload: 25} */
-          }
+          onClick={() => dispatch(incrementAction(25))}
         >
           +25
         </button>

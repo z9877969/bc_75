@@ -1,22 +1,40 @@
 # Module_07. lesson_1
 
-# _ Async redux _
+# _ Селектори _
 
-[mockapi](https://mockapi.io/projects/684f0d7cf0c9c9848d29f4dd)
+## 1. Що вирішують селектори.
 
-## 1. Операції.
-`-` виконання екшенів pending | success | reject \
-`-` redux-thunk - вбудований механізм для роботи з операціями 
+`-` обчислення даних зі стейту
 
-## 2. createAsyncThunk.
-`-` абстракція над операціями
+## 2. Найменування.
 
-## 3. Todo CRUD
+`-` префікс select - [рекомендація від RTK](https://redux.js.org/style-guide#name-selector-functions-as-selectthing)
+
+## 3. Складові селектори.
+
 ```
-C - create
-R - read
-U - update
-D - delete
+export const selectOrderData = createSelector(
+  [(state) => state.global.order],
+  (order) => {
+    if (order) {
+      return {
+        epolicyOrderId: order[SAVED_ORDER_TYPE.EPOLICY].id,
+        vclOrderId: order[SAVED_ORDER_TYPE.VCL]?.id ?? null,
+        billAmount: order[SAVED_ORDER_TYPE.VCL]
+          ? order[SAVED_ORDER_TYPE.VCL].brokerDiscountedPayment +
+            order[SAVED_ORDER_TYPE.EPOLICY].brokerDiscountedPayment
+          : order[SAVED_ORDER_TYPE.EPOLICY].brokerDiscountedPayment,
+        shopOrderNumber: order[SAVED_ORDER_TYPE.EPOLICY].code,
+        email: order[SAVED_ORDER_TYPE.EPOLICY].customer.email,
+        orderState: order[SAVED_ORDER_TYPE.EPOLICY].state,
+      };
+    }
+    return null;
+  }
+);
 ```
 
-## 4. Persist
+## 4. Оптимізація
+`-` createSelect
+
+## 5. Persist

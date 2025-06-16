@@ -5,52 +5,18 @@ import {
   removeTodoApi,
   updateTodoStatusApi,
 } from '../../services/todoApi';
-import {
-  /* addTodoFulfilled,
-  addTodoPending,
-  addTodoRejected, */
-  getTodoFulfilled,
-  getTodoPending,
-  getTodoRejected,
-} from './todoSlice';
-
-// export const addData = (formData) => {
-//   return async (dispatch) => {
-//     dispatch(addTodoPending()); // {type: "todo/add/pending"}
-//     try {
-//       const data = await addTodoApi(formData);
-//       dispatch(addTodoFulfilled(data));
-//     } catch (error) {
-//       dispatch(addTodoRejected(error.message));
-//     }
-//   };
-// };
 
 export const addData = createAsyncThunk(
   'todo/add',
   async (formData, { rejectWithValue }) => {
     try {
-      // dispatch({type: 'todo/add/pending' })
       const todo = await addTodoApi(formData);
-      return todo; // dispatch({type: 'todo/add/fulfilled, payload: todo  })
+      return todo;
     } catch (error) {
-      // return error.message  // dispatch({type: 'todo/add/fulfilled, payload: error.message  })
-      return rejectWithValue(error.message); // dispatch({type: 'todo/add/rejected', payload: error.message  })
+      return rejectWithValue(error.message);
     }
   }
 );
-
-// export const getTodo = () => {
-//   return async (dispatch) => {
-//     try {
-//       dispatch(getTodoPending());
-//       const todoList = await getTodoApi();
-//       dispatch(getTodoFulfilled(todoList));
-//     } catch (error) {
-//       dispatch(getTodoRejected(error.message));
-//     }
-//   };
-// };
 
 export const getTodo = createAsyncThunk(
   'todo/get',
@@ -87,5 +53,3 @@ export const updateTodoStatus = createAsyncThunk(
     }
   }
 );
-
-// removeTodo(21)

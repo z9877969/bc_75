@@ -9,9 +9,10 @@ const TodoForm = () => {
   const dispatch = useDispatch();
 
   const [form, setForm] = useState({
-    date: '',
+    date: '2025-06-20',
     descr: '',
-    priority: '',
+    priority: 'low',
+    theme: 'green',
   });
 
   const lowId = useId();
@@ -27,7 +28,7 @@ const TodoForm = () => {
     e.preventDefault();
     const formData = { ...form, isDone: false };
 
-    dispatch(addData(formData)); // ((dispatch) => {})()
+    dispatch(addData(formData));
   };
 
   useEffect(() => {});

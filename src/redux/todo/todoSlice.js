@@ -5,14 +5,13 @@ import {
   removeTodo,
   updateTodoStatus,
 } from './todoOperations';
-// import { todo } from '../../assets/todo';
 
 const todoSlice = createSlice({
   name: 'todo',
   initialState: {
     items: [],
     filter: 'all',
-    isLoading: false, // true
+    isLoading: false,
     error: null,
   },
   reducers: {
