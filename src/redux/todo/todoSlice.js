@@ -1,38 +1,48 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { todo } from '../../assets/todo';
+// import { todo } from '../../assets/todo';
 
 const todoSlice = createSlice({
   name: 'todo',
   initialState: {
-    items: todo, // [{}, {}]
+    items: [],
     filter: 'all',
-    editedTodo: null, // {}
+    isLoading: false, // true
+    error: null,
   },
   reducers: {
+    addTodoPending(state) {
+      state.isLoading = true;
+    },
+    addTodoFulfilled(state, { payload }) {
+      state.isLoading = false;
+      state.error = null;
+      state.items.push(payload);
+    },
+    addTodoRejected(state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
+    },
+
+    getTodoPending(state) {
+      state.isLoading = true;
+    },
+    getTodoFulfilled(state, { payload }) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = payload;
+    },
+    getTodoRejected(state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
+    },
+
     addTodoAction(state, { payload }) {
-      // return {
-      //   ...state,
-      //   items: [...state.items, payload],
-      // };
       state.items.push(payload);
     },
     removeTodoAction(state, { payload }) {
-      //   return {
-      //     ...state,
-      //     items: state.items.filter((el) => el.id !== payload),
-      //   };
       state.items = state.items.filter((el) => el.id !== payload);
-
-      //   const removedItemIdx = state.items.findIndex((el) => el.id === payload);
-      //   state.items.splice(removedItemIdx, 1);
     },
     updateTodoStatusAction(state, { payload }) {
-      //   return {
-      //     ...state,
-      //     items: state.items.map((el) =>
-      //       el.id !== payload ? el : { ...el, isDone: !el.isDone }
-      //     ),
-      //   };
       const updatedItemIdx = state.items.findIndex((el) => el.id === payload);
       const updatingTodo = state.items[updatedItemIdx];
       state.items[updatedItemIdx] = {
@@ -47,6 +57,12 @@ const todoSlice = createSlice({
 });
 
 export const {
+  addTodoPending,
+  addTodoFulfilled,
+  addTodoRejected,
+  getTodoPending,
+  getTodoFulfilled,
+  getTodoRejected,
   addTodoAction,
   removeTodoAction,
   updateTodoStatusAction,

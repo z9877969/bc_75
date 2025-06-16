@@ -1,11 +1,21 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import clsx from 'clsx';
 import Button from '../Button/Button';
 import s from './TodoForm.module.css';
 import { useDispatch } from 'react-redux';
 // import { addTodoAction } from '../../redux/todo/todoActions';
-import { addTodoAction } from '../../redux/todo/todoSlice';
+import {
+  addTodoAction,
+  addTodoFulfilled,
+  addTodoPending,
+  addTodoRejected,
+} from '../../redux/todo/todoSlice';
+import { addTodoApi } from '../../services/todoApi';
+import { addData } from '../../redux/todo/todoOperations';
+
+
+
 
 const TodoForm = () => {
   const dispatch = useDispatch();
@@ -28,8 +38,11 @@ const TodoForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = { ...form, isDone: false, id: uuidv4() };
-    dispatch(addTodoAction(formData));
+
+    dispatch(addData(formData)); // ((dispatch) => {})()
   };
+
+  useEffect(() => {});
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>

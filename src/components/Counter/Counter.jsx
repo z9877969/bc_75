@@ -1,10 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Container from '../Container/Container';
 import s from './Counter.module.css';
-import // decrementAction,
-// incrementAction,
-// resetAction,
-'../../redux/count/countActions';
 
 import {
   decrementAction,
