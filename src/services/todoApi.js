@@ -28,3 +28,9 @@ export const updateTodoStatusApi = async (id, isDone) => {
 
   return data;
 };
+
+export const updateTodoDataApi = async (id, formData) => {
+  const { data } = await todoApi.put(`todo/${id}`, formData);
+
+  return data;
+};

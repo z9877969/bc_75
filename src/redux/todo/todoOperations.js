@@ -3,6 +3,7 @@ import {
   addTodoApi,
   getTodoApi,
   removeTodoApi,
+  updateTodoDataApi,
   updateTodoStatusApi,
 } from '../../services/todoApi';
 
@@ -53,6 +54,19 @@ export const updateTodoStatus = createAsyncThunk(
   async ({ id, isDone }, { rejectWithValue }) => {
     try {
       const updatedTodo = await updateTodoStatusApi(id, isDone);
+      return updatedTodo;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateTodoData = createAsyncThunk(
+  'todo/updateData',
+  async (formData, { rejectWithValue }) => {
+    try {
+      const { id, ...rest } = formData;
+      const updatedTodo = await updateTodoDataApi(id, rest);
       return updatedTodo;
     } catch (error) {
       return rejectWithValue(error.message);

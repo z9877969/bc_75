@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import s from './TodoListItem.module.css';
 import { useDispatch } from 'react-redux';
 import { removeTodo, updateTodoStatus } from '../../redux/todo/todoOperations';
+import { addEditedDataAction } from '../../redux/todo/todoSlice';
 
 const TodoListItem = ({ id, theme, isDone, date, priority, descr }) => {
   const dispatch = useDispatch();
@@ -25,6 +26,16 @@ const TodoListItem = ({ id, theme, isDone, date, priority, descr }) => {
       </label>
       <button className={s.todoBtn} onClick={() => dispatch(removeTodo(id))}>
         Remove
+      </button>
+      <button
+        className={s.todoBtn}
+        onClick={() =>
+          dispatch(
+            addEditedDataAction({ id, theme, isDone, date, priority, descr })
+          )
+        }
+      >
+        Edit
       </button>
     </li>
   );

@@ -1,9 +1,13 @@
 import { useEffect, useId, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 import Button from '../Button/Button';
 import s from './TodoForm.module.css';
-import { addData } from '../../redux/todo/todoOperations';
+import { addData, updateTodoData } from '../../redux/todo/todoOperations';
+import {
+  resetEditedDataAction,
+  selectEditedData,
+} from '../../redux/todo/todoSlice';
 
 const initialState = {
   date: '2025-06-20',
@@ -15,6 +19,8 @@ const initialState = {
 const TodoForm = () => {
   // console.log('Render Form');
   const dispatch = useDispatch();
+
+  const editedData = useSelector(selectEditedData);
 
   const [form, setForm] = useState(initialState);
 
@@ -35,10 +41,22 @@ const TodoForm = () => {
     setForm(initialState);
   };
 
-  useEffect(() => {});
+  const handleEditDataForm = (e) => {
+    e.preventDefault();
+    dispatch(updateTodoData(form)).unwrap();
+
+    dispatch(resetEditedDataAction());
+  };
+
+  useEffect(() => {
+    editedData ? setForm(editedData) : setForm(initialState);
+  }, [editedData]);
 
   return (
-    <form className={s.form} onSubmit={handleSubmit}>
+    <form
+      className={s.form}
+      onSubmit={!editedData ? handleSubmit : handleEditDataForm}
+    >
       <label className={s.label}>
         <span> Date </span>
         <input
@@ -103,9 +121,23 @@ const TodoForm = () => {
           </label>
         </div>
       </div>
-      <Button type="submit" size="medium" className={s.submitBtn}>
-        Submit
-      </Button>
+      <div style={{ display: 'flex', gap: '20px' }}>
+        <Button type="submit" size="medium" className={s.submitBtn}>
+          {editedData ? 'Edit' : 'Create'}
+        </Button>
+        {editedData && (
+          <Button
+            type="button"
+            size="medium"
+            variant="warn"
+            handleClick={() => {
+              dispatch(resetEditedDataAction());
+            }}
+          >
+            Reset
+          </Button>
+        )}
+      </div>
     </form>
   );
 };
