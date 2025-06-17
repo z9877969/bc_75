@@ -5,12 +5,13 @@ import TodoList from '../components/TodoList/TodoList';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getTodo } from '../redux/todo/todoOperations';
+import { selectError, selectIsLoading } from '../redux/todo/todoSlice';
 
 const TodoPage = () => {
   const dispatch = useDispatch();
 
-  const isLoading = useSelector((state) => state.todo.isLoading);
-  const error = useSelector((state) => state.todo.error);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(getTodo());

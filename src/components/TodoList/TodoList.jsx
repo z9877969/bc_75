@@ -1,32 +1,38 @@
 import s from './TodoList.module.css';
 import TodoListItem from '../TodoListItem/TodoListItem';
-import { useSelector } from 'react-redux';
-import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  incrementAction,
+  selectCountValue,
+} from '../../redux/count/countSlice';
+import {
+  selectFilteredTodo,
+} from '../../redux/todo/todoSlice';
 
 const TodoList = () => {
-  const todoList = useSelector((state) => state.todo.items);
-  const filter = useSelector((state) => state.todo.filter);
-
-  const filteredTodo = useMemo(() => {
-    return filter === 'all'
-      ? todoList
-      : todoList.filter((todo) => todo.priority === filter);
-  }, [filter, todoList]);
+  const dispatch = useDispatch();
+  const count = useSelector(selectCountValue);
+  const filteredTodo = useSelector(selectFilteredTodo);
+  // const {data: filteredTodo} = useSelector(selectSomeData)
 
   return (
-    <ul className={s.container}>
-      {filteredTodo.map(({ id, date, descr, priority, theme, isDone }) => (
-        <TodoListItem
-          key={id}
-          id={id}
-          date={date}
-          descr={descr}
-          priority={priority}
-          theme={theme}
-          isDone={isDone}
-        />
-      ))}
-    </ul>
+    <>
+      <h1>Count {count}</h1>
+      <button onClick={() => dispatch(incrementAction(15))}>+15</button>
+      <ul className={s.container}>
+        {filteredTodo.map(({ id, date, descr, priority, theme, isDone }) => (
+          <TodoListItem
+            key={id}
+            id={id}
+            date={date}
+            descr={descr}
+            priority={priority}
+            theme={theme}
+            isDone={isDone}
+          />
+        ))}
+      </ul>
+    </>
   );
 };
 

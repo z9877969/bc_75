@@ -1,10 +1,42 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 import {
   addData,
   getTodo,
   removeTodo,
   updateTodoStatus,
 } from './todoOperations';
+
+export const selectIsLoading = (state) => state.todo.isLoading;
+export const selectError = (state) => state.todo.error;
+export const selectTodoItems = (state) => state.todo.items;
+export const selectTodoFilter = (state) => state.todo.filter;
+
+// export const selectFilteredTodo = (state) => {
+//   const filter = selectTodoFilter(state);
+//   const todoList = selectTodoItems(state);
+
+//   console.log('STARt selectFilteredTodo');
+//   return filter === 'all'
+//     ? todoList
+//     : todoList.filter((todo) => todo.priority === filter);
+// };
+export const selectFilteredTodo = createSelector(
+  [selectTodoFilter, selectTodoItems],
+  (filter, todoList) => {
+    console.log('selectFilteredTodo createSelect');
+
+    return filter === 'all'
+      ? todoList
+      : todoList.filter((todo) => todo.priority === filter);
+  }
+);
+
+export const selectSomeData = createSelector(
+  [selectIsLoading, selectError, selectFilteredTodo],
+  (isLoading, error, filteredData) => {
+    return { isLoading, error, data: filteredData };
+  }
+);
 
 const todoSlice = createSlice({
   name: 'todo',

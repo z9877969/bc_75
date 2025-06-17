@@ -6,16 +6,18 @@ import {
   decrementAction,
   incrementAction,
   resetAction,
+  selectCountValue,
 } from '../../redux/count/countSlice';
 
 const Counter = () => {
-  const count = useSelector((state) => state.count);
+  const count = useSelector(selectCountValue);
 
   const dispatch = useDispatch();
 
   return (
     <Container className={s.container}>
       <p className={s.count}>{count}</p>
+      {/* <p className={s.count}>Clicks amount{clicksAmount}</p> */}
       <div className={s.btnsWrapper}>
         <button
           className={s.btn}
