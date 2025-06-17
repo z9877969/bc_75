@@ -8,6 +8,7 @@ export const addTodoApi = async (formData) => {
   const { data } = await todoApi.post('/todo', formData);
 
   return data;
+  // throw new Error('some error');
 };
 
 export const getTodoApi = async () => {

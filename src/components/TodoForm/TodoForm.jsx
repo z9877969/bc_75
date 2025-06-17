@@ -5,15 +5,18 @@ import Button from '../Button/Button';
 import s from './TodoForm.module.css';
 import { addData } from '../../redux/todo/todoOperations';
 
+const initialState = {
+  date: '2025-06-20',
+  descr: '',
+  priority: 'low',
+  theme: 'green',
+};
+
 const TodoForm = () => {
+  // console.log('Render Form');
   const dispatch = useDispatch();
 
-  const [form, setForm] = useState({
-    date: '2025-06-20',
-    descr: '',
-    priority: 'low',
-    theme: 'green',
-  });
+  const [form, setForm] = useState(initialState);
 
   const lowId = useId();
   const mediumId = useId();
@@ -24,11 +27,12 @@ const TodoForm = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = { ...form, isDone: false };
 
-    dispatch(addData(formData));
+    await dispatch(addData(formData)).unwrap();
+    setForm(initialState);
   };
 
   useEffect(() => {});

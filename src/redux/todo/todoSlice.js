@@ -10,6 +10,7 @@ export const selectIsLoading = (state) => state.todo.isLoading;
 export const selectError = (state) => state.todo.error;
 export const selectTodoItems = (state) => state.todo.items;
 export const selectTodoFilter = (state) => state.todo.filter;
+export const selectIsTodo = (state) => state.todo.items.length > 0; // true | false
 
 // export const selectFilteredTodo = (state) => {
 //   const filter = selectTodoFilter(state);

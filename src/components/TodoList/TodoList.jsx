@@ -15,6 +15,8 @@ const TodoList = () => {
   const filteredTodo = useSelector(selectFilteredTodo);
   // const {data: filteredTodo} = useSelector(selectSomeData)
 
+  // console.log('Render TodoList');
+
   return (
     <>
       <h1>Count {count}</h1>
