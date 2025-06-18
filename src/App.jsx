@@ -10,10 +10,18 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<SharedLayot />}>
-          <Route path="/counter" element={<CounterPage />} />
-          <Route path="/todo" element={<TodoPage />} />
-          <Route path="/" element={<Navigate to={'/counter'} />} />
-          <Route path="*" element={<Navigate to={'/counter'} />} />
+          <>
+            <Route path="/counter" element={<CounterPage />} />
+          </>
+          <>
+            <Route path="/todo" element={<TodoPage />} />
+          </>
+          <>
+            <Route path="/" element={<Navigate to={'/counter'} />} />
+          </>
+          <>
+            <Route path="*" element={<Navigate to={'/counter'} />} />
+          </>
         </Route>
       </Routes>
     </>

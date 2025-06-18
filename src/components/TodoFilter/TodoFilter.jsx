@@ -3,7 +3,6 @@ import { changeFilterAction } from '../../redux/todo/todoSlice';
 import s from './TodoFilter.module.css';
 
 const TodoFilter = () => {
-  // console.log('Render Filter');
   const dispatch = useDispatch();
 
   const filter = useSelector((state) => state.todo.filter);

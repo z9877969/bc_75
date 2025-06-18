@@ -24,19 +24,24 @@ const TodoListItem = ({ id, theme, isDone, date, priority, descr }) => {
         />
         Done
       </label>
-      <button className={s.todoBtn} onClick={() => dispatch(removeTodo(id))}>
-        Remove
-      </button>
-      <button
-        className={s.todoBtn}
-        onClick={() =>
-          dispatch(
-            addEditedDataAction({ id, theme, isDone, date, priority, descr })
-          )
-        }
-      >
-        Edit
-      </button>
+      <div className={s.btnsWrapper}>
+        <button
+          className={clsx(s.todoBtn, s.remove)}
+          onClick={() => dispatch(removeTodo(id))}
+        >
+          Remove
+        </button>
+        <button
+          className={clsx(s.todoBtn, s.edit)}
+          onClick={() =>
+            dispatch(
+              addEditedDataAction({ id, theme, isDone, date, priority, descr })
+            )
+          }
+        >
+          Edit
+        </button>
+      </div>
     </li>
   );
 };

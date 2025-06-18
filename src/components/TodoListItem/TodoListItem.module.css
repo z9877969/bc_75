@@ -1,5 +1,7 @@
 /* todo item */
 .toDoItem {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   color: rgb(61, 56, 10);
   box-shadow: 0 0 4px 4px #00000060;
@@ -32,6 +34,13 @@
   }
 }
 
+.btnsWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: auto;
+}
+
 .todoBtn {
   display: block;
   width: 45%;
@@ -44,6 +53,13 @@
 
   &:active {
     transform: scale(0.95);
+  }
+
+  &.remove {
+    background-color: rgb(51, 87, 129);
+  }
+  &.edit {
+    background-color: rgb(51, 87, 129);
   }
 }
 

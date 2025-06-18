@@ -55,30 +55,19 @@ const todoSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    console.log('builder :>> ', builder);
     builder
-      // .addCase(addData.pending, (state) => {
-      //   state.isLoading = true;
-      // })
       .addCase(addData.fulfilled, (state, { payload }) => {
-        // state.isLoading = false;
         state.error = null;
         state.items.push(payload);
       })
       .addCase(addData.rejected, (state, { payload }) => {
-        // state.isLoading = false;
         state.error = payload;
       })
-      // .addCase(getTodo.pending, (state) => {
-      //   state.isLoading = true;
-      // })
       .addCase(getTodo.fulfilled, (state, { payload }) => {
-        // state.isLoading = false;
         state.error = null;
         state.items = payload;
       })
       .addCase(getTodo.rejected, (state, { payload }) => {
-        // state.isLoading = false;
         state.error = payload;
       })
       .addCase(removeTodo.fulfilled, (state, { payload }) => {

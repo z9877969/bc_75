@@ -17,7 +17,6 @@ const initialState = {
 };
 
 const TodoForm = () => {
-  // console.log('Render Form');
   const dispatch = useDispatch();
 
   const editedData = useSelector(selectEditedData);
