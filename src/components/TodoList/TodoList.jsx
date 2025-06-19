@@ -8,7 +8,7 @@ const TodoList = () => {
 
   return (
     <ul className={s.container}>
-      {filteredTodo.map(({ id, date, descr, priority, theme, isDone }) => (
+      {filteredTodo.map(({ _id: id, date, descr, priority, theme, isDone }) => (
         <TodoListItem
           key={id}
           id={id}

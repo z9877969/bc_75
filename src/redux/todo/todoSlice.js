@@ -71,7 +71,7 @@ const todoSlice = createSlice({
         state.error = payload;
       })
       .addCase(removeTodo.fulfilled, (state, { payload }) => {
-        state.items = state.items.filter((el) => el.id !== payload.id);
+        state.items = state.items.filter((el) => el._id !== payload);
         state.error = null;
       })
       .addCase(removeTodo.rejected, (state, { payload }) => {

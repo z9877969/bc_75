@@ -4,12 +4,11 @@ const todoApi = axios.create({
   baseURL: 'https://node-js-dgoy.onrender.com/api',
 });
 
-export const getTodoApi = async (token) => {
-  const { data } = await todoApi.get('/todo', {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+const setToken = (token) =>
+  (todoApi.defaults.headers.common.Authorization = `Bearer ${token}`);
+
+export const getTodoApi = async () => {
+  const { data } = await todoApi.get('/todo');
 
   return data;
 };
@@ -47,5 +46,6 @@ export const registerUserApi = async (formData) => {
 
 export const loginUserApi = async (formData) => {
   const { data } = await todoApi.post('/auth/login', formData);
+  setToken(data.token);
   return data;
 };

@@ -21,10 +21,9 @@ export const addData = createAsyncThunk(
 
 export const getTodo = createAsyncThunk(
   'todo/get',
-  async (_, { rejectWithValue, getState }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const state = getState();
-      const todoList = await getTodoApi(state.auth.token);
+      const todoList = await getTodoApi();
       return todoList;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -42,8 +41,8 @@ export const removeTodo = createAsyncThunk(
   'todo/remove',
   async (id, { rejectWithValue }) => {
     try {
-      const removedTodo = await removeTodoApi(id);
-      return removedTodo;
+      await removeTodoApi(id);
+      return id;
     } catch (error) {
       return rejectWithValue(error.message);
     }
