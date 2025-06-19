@@ -79,7 +79,7 @@ const todoSlice = createSlice({
       })
       .addCase(updateTodoStatus.fulfilled, (state, { payload }) => {
         const updatedItemIdx = state.items.findIndex(
-          (el) => el.id === payload.id
+          (el) => el._id === payload._id
         );
         const updatingTodo = state.items[updatedItemIdx];
         state.items[updatedItemIdx] = {

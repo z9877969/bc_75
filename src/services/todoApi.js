@@ -27,7 +27,7 @@ export const removeTodoApi = async (id) => {
 };
 
 export const updateTodoStatusApi = async (id, isDone) => {
-  const { data } = await todoApi.put(`todo/${id}`, { isDone });
+  const { data } = await todoApi.patch(`/todo/${id}/status`, { isDone });
 
   return data;
 };
@@ -47,5 +47,11 @@ export const registerUserApi = async (formData) => {
 export const loginUserApi = async (formData) => {
   const { data } = await todoApi.post('/auth/login', formData);
   setToken(data.token);
+  return data;
+};
+
+export const getCurUserApi = async (token) => {
+  setToken(token);
+  const { data } = await todoApi.get('/auth/current');
   return data;
 };

@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginUser, registerUser } from './authOperations';
+import { getCurUser, loginUser, registerUser } from './authOperations';
 
-export const selectIsAuth = (state) => state.auth.isAuth;
+// export const selectIsAuth = (state) => state.auth.isAuth;
+export const selectIsAuth = (state) => Boolean(state.auth.token);
 
 const authSlice = createSlice({
   name: 'auth',
@@ -43,6 +44,16 @@ const authSlice = createSlice({
       .addCase(loginUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+      })
+      .addCase(getCurUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCurUser.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.user.email = payload.email;
+        state.user.avatarUrl = payload.avatarURL;
+        state.isAuth = true;
       }),
 });
 
