@@ -21,9 +21,10 @@ export const addData = createAsyncThunk(
 
 export const getTodo = createAsyncThunk(
   'todo/get',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const todoList = await getTodoApi();
+      const state = getState();
+      const todoList = await getTodoApi(state.auth.token);
       return todoList;
     } catch (error) {
       return rejectWithValue(error.message);

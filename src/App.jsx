@@ -4,6 +4,7 @@ import SharedLayot from './components/SharedLayout/SharedLayout';
 import { useSelector } from 'react-redux';
 import { selectIsAuth } from './redux/auth/authSlice';
 import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 
 const CounterPage = lazy(() => import('./pages/CounterPage'));
 const TodoPage = lazy(() => import('./pages/TodoPage'));
@@ -23,7 +24,7 @@ function App() {
           ) : (
             <>
               <Route path="/register" element={<RegisterPage />} />
-              <Route path="/login" element={<h1>LoginPage</h1>} />
+              <Route path="/login" element={<LoginPage />} />
               <Route path="*" element={<Navigate to={'/login'} />} />
             </>
           )}

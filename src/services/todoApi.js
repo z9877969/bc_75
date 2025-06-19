@@ -4,17 +4,21 @@ const todoApi = axios.create({
   baseURL: 'https://node-js-dgoy.onrender.com/api',
 });
 
+export const getTodoApi = async (token) => {
+  const { data } = await todoApi.get('/todo', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return data;
+};
+
 export const addTodoApi = async (formData) => {
   const { data } = await todoApi.post('/todo', formData);
 
   return data;
   // throw new Error('some error');
-};
-
-export const getTodoApi = async () => {
-  const { data } = await todoApi.get('/todo');
-
-  return data;
 };
 
 export const removeTodoApi = async (id) => {
@@ -38,5 +42,10 @@ export const updateTodoDataApi = async (id, formData) => {
 // === Auth endpoints
 export const registerUserApi = async (formData) => {
   const { data } = await todoApi.post('/auth/register', formData);
+  return data;
+};
+
+export const loginUserApi = async (formData) => {
+  const { data } = await todoApi.post('/auth/login', formData);
   return data;
 };
