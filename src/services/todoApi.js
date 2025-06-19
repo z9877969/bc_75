@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const todoApi = axios.create({
-  baseURL: 'https://684f0d7cf0c9c9848d29f4dc.mockapi.io/api',
+  baseURL: 'https://node-js-dgoy.onrender.com/api',
 });
 
 export const addTodoApi = async (formData) => {
@@ -32,5 +32,11 @@ export const updateTodoStatusApi = async (id, isDone) => {
 export const updateTodoDataApi = async (id, formData) => {
   const { data } = await todoApi.put(`todo/${id}`, formData);
 
+  return data;
+};
+
+// === Auth endpoints
+export const registerUserApi = async (formData) => {
+  const { data } = await todoApi.post('/auth/register', formData);
   return data;
 };
