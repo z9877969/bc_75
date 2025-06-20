@@ -3,16 +3,19 @@ import {
   getCurUser,
   loginUser,
   logoutUser,
+  refreshToken,
   registerUser,
 } from './authOperations';
 
 // export const selectIsAuth = (state) => state.auth.isAuth;
 export const selectIsAuth = (state) => Boolean(state.auth.token);
+export const selectRefreshToken = (state) => Boolean(state.auth.refreshToken);
 
 const initialState = {
   isAuth: false,
   isLoading: false,
   token: null,
+  refreshToken: null,
   user: {
     email: '',
     avatarUrl: '',
@@ -27,6 +30,9 @@ const authSlice = createSlice({
     resetErrorAction(state) {
       state.error = null;
     },
+    logoutAction() {
+      return { ...initialState };
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -37,6 +43,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.token = payload.token;
+        state.refreshToken = payload.refreshToken;
         state.user.email = payload.user.email;
         state.user.avatarUrl = payload.user.avatarURL;
         state.isAuth = true;
@@ -52,6 +59,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.token = payload.token;
+        state.refreshToken = payload.refreshToken;
         state.user.email = payload.user.email;
         state.user.avatarUrl = payload.user.avatarURL;
         state.isAuth = true;
@@ -82,8 +90,22 @@ const authSlice = createSlice({
       })
       .addCase(logoutUser.rejected, () => {
         return { ...initialState };
+      })
+      .addCase(refreshToken.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(refreshToken.fulfilled, (state, { payload }) => {
+        const { token, refreshToken } = payload;
+        state.isLoading = true;
+        state.error = null;
+        state.token = token;
+        state.refreshToken = refreshToken;
+      })
+      .addCase(refreshToken.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
       }),
 });
 
-export const { resetErrorAction } = authSlice.actions;
+export const { resetErrorAction, logoutAction } = authSlice.actions;
 export default authSlice.reducer;

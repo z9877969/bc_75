@@ -6,6 +6,7 @@ import { resetErrorAction, selectIsAuth } from './redux/auth/authSlice';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import { getCurUser } from './redux/auth/authOperations';
+import RefreshTokenInterceptor from './components/RefreshTokenInterceptor/RefreshTokenInterceptor';
 
 const CounterPage = lazy(() => import('./pages/CounterPage'));
 const TodoPage = lazy(() => import('./pages/TodoPage'));
@@ -85,6 +86,7 @@ function App() {
         </Route>
       </Routes>
       <ErrorHandler />
+      <RefreshTokenInterceptor />
     </>
   );
 }

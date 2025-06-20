@@ -3,8 +3,10 @@ import {
   getCurUserApi,
   loginUserApi,
   logoutUserApi,
+  refreshTokenApi,
   registerUserApi,
 } from '../../services/todoApi';
+import { logoutAction } from './authSlice';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
@@ -61,5 +63,26 @@ export const logoutUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
+  }
+);
+
+export const refreshToken = createAsyncThunk(
+  'auth/refreshToken',
+  async (_, { rejectWithValue, getState, dispatch }) => {
+    try {
+      const { auth } = getState();
+      const { token, refreshToken } = await refreshTokenApi(auth.refreshToken);
+      return { token, refreshToken };
+    } catch (error) {
+      // dispatch(logoutAction());
+      console.log('refreshToken operation error');
+      return rejectWithValue(error.message);
+    }
+  },
+  {
+    condition(_, { getState }) {
+      const { auth } = getState();
+      return Boolean(auth.refreshToken);
+    },
   }
 );

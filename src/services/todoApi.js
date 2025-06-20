@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const todoApi = axios.create({
+export const todoApi = axios.create({
   baseURL: 'https://node-js-dgoy.onrender.com/api',
 });
 
-const setToken = (token) =>
+export const setToken = (token) =>
   (todoApi.defaults.headers.common.Authorization = `Bearer ${token}`);
 
 export const getTodoApi = async () => {
@@ -58,5 +58,18 @@ export const getCurUserApi = async (token) => {
 
 export const logoutUserApi = async () => {
   const { data } = await todoApi.post('/auth/logout');
+  return data;
+};
+
+export const refreshTokenApi = async (refreshToken) => {
+  const { data } = await todoApi.post(
+    'auth/refresh',
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+      },
+    }
+  );
   return data;
 };
