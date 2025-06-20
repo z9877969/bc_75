@@ -27,11 +27,11 @@ const LoginPage = () => {
       >
         <Form>
           <label>
-            Email
+            <p>Email</p>
             <Field name="email" />
           </label>
           <label>
-            Password
+            <p>Password</p>
             <Field name="password" />
           </label>
           <Button type="submit" size="medium">

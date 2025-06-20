@@ -1,9 +1,10 @@
-# Module_08. lesson_1
+# Module_08. lesson_2
 
-# _ Авторизація _
+# _ Обмежені маршрути _
 
-## 1. Авторизація для взаємодії з власними даними в БД.
-## 1. auth-request & token принцип, як це працює.
-## 2. Routes, RegisterPage/LoginPage, Navigate
-## 3. logout
-## 4. AuthForm(shared)
+
+## 1. Logout.
+## 2. PrivateRoute | RestrictedRoute.
+## 3. Refresh token
+## 4. GET /auth/current - невалідний токен | оновлення сторінки noAuthUser
+## 5. AuthForm(shared)
