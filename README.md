@@ -5,6 +5,6 @@
 
 ## 1. Logout.
 ## 2. PrivateRoute | RestrictedRoute.
-## 3. Refresh token
-## 4. GET /auth/current - невалідний токен | оновлення сторінки noAuthUser
+## 3. GET /auth/current - невалідний токен | оновлення сторінки noAuthUser
+## 4. Refresh token
 ## 5. AuthForm(shared)
