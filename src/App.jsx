@@ -2,7 +2,7 @@ import { lazy, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import SharedLayot from './components/SharedLayout/SharedLayout';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsAuth } from './redux/auth/authSlice';
+import { resetErrorAction, selectIsAuth } from './redux/auth/authSlice';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import { getCurUser } from './redux/auth/authOperations';
@@ -10,9 +10,36 @@ import { getCurUser } from './redux/auth/authOperations';
 const CounterPage = lazy(() => import('./pages/CounterPage'));
 const TodoPage = lazy(() => import('./pages/TodoPage'));
 
+const PrivateRoute = ({ children, to = '/login' }) => {
+  const isAuth = useSelector(selectIsAuth);
+  return isAuth ? children : <Navigate to={to} />;
+};
+
+const RestrictedRoute = ({ children, to = '/counter' }) => {
+  const isAuth = useSelector(selectIsAuth);
+  console.log('to :>> ', to);
+
+  return !isAuth ? children : <Navigate to={to} />;
+};
+
+const MainNavigate = () => {
+  const isAuth = useSelector(selectIsAuth);
+  return isAuth ? <Navigate to={'/counter'} /> : <Navigate to={'/login'} />;
+};
+
+const ErrorHandler = () => {
+  const dispatch = useDispatch();
+  const error = useSelector((state) => state.auth.error);
+  useEffect(() => {
+    if (error?.status === 401) {
+      alert('Login retry');
+      dispatch(resetErrorAction());
+    }
+  }, [error, dispatch]);
+};
+
 function App() {
   const dispatch = useDispatch();
-  const isAuth = useSelector(selectIsAuth);
 
   useEffect(() => {
     dispatch(getCurUser());
@@ -22,21 +49,42 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<SharedLayot />}>
-          {isAuth ? (
-            <>
-              <Route path="/counter" element={<CounterPage />} />
-              <Route path="/todo" element={<TodoPage />} />
-              <Route path="*" element={<Navigate to={'/counter'} />} />
-            </>
-          ) : (
-            <>
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="*" element={<Navigate to={'/login'} />} />
-            </>
-          )}
+          <Route
+            path="/counter"
+            element={
+              <PrivateRoute to="/register">
+                <CounterPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/todo"
+            element={
+              <PrivateRoute>
+                <TodoPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute to="/todo">
+                <RegisterPage />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute>
+                <LoginPage />
+              </RestrictedRoute>
+            }
+          />
+          <Route path="*" element={<MainNavigate />} />
         </Route>
       </Routes>
+      <ErrorHandler />
     </>
   );
 }

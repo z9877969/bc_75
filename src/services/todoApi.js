@@ -55,3 +55,8 @@ export const getCurUserApi = async (token) => {
   const { data } = await todoApi.get('/auth/current');
   return data;
 };
+
+export const logoutUserApi = async () => {
+  const { data } = await todoApi.post('/auth/logout');
+  return data;
+};
