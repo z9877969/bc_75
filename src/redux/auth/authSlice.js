@@ -9,7 +9,7 @@ import {
 
 // export const selectIsAuth = (state) => state.auth.isAuth;
 export const selectIsAuth = (state) => Boolean(state.auth.token);
-export const selectRefreshToken = (state) => Boolean(state.auth.refreshToken);
+export const selectRefreshToken = (state) => state.auth.refreshToken;
 
 const initialState = {
   isAuth: false,
@@ -32,6 +32,10 @@ const authSlice = createSlice({
     },
     logoutAction() {
       return { ...initialState };
+    },
+    setTokens(state, { payload }) {
+      state.token = payload.token;
+      state.refreshToken = payload.refreshToken;
     },
   },
   extraReducers: (builder) =>
@@ -79,8 +83,8 @@ const authSlice = createSlice({
         state.isAuth = true;
       })
       .addCase(getCurUser.rejected, (state, { payload }) => {
-        // state.error = payload;
-        return { ...initialState, error: payload };
+        state.isLoading = false;
+        state.error = payload;
       })
       .addCase(logoutUser.pending, (state) => {
         state.isLoading = true;

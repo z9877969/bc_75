@@ -42,8 +42,7 @@ export const getCurUser = createAsyncThunk(
       const userData = await getCurUserApi(auth.token);
       return userData;
     } catch (error) {
-      console.dir(error);
-      return rejectWithValue({ message: error.message, status: error.status });
+      return rejectWithValue(error.message);
     }
   },
   {
@@ -74,8 +73,10 @@ export const refreshToken = createAsyncThunk(
       const { token, refreshToken } = await refreshTokenApi(auth.refreshToken);
       return { token, refreshToken };
     } catch (error) {
-      // dispatch(logoutAction());
-      console.log('refreshToken operation error');
+      const timeoutId = setTimeout(() => {
+        dispatch(logoutAction());
+        clearTimeout(timeoutId);
+      });
       return rejectWithValue(error.message);
     }
   },

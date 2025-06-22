@@ -18,7 +18,6 @@ const PrivateRoute = ({ children, to = '/login' }) => {
 
 const RestrictedRoute = ({ children, to = '/counter' }) => {
   const isAuth = useSelector(selectIsAuth);
-  console.log('to :>> ', to);
 
   return !isAuth ? children : <Navigate to={to} />;
 };
