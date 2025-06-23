@@ -8,6 +8,7 @@ import {
   resetEditedDataAction,
   selectEditedData,
 } from '../../redux/todo/todoSlice';
+import { useModal } from '../../main';
 
 const initialState = {
   date: '2025-06-20',
@@ -18,6 +19,10 @@ const initialState = {
 
 const TodoForm = () => {
   const dispatch = useDispatch();
+
+  // const  dispatch1 = useContext(DispatchContext);
+  // const { state } = useContext(StoreContext);
+  const setModal = useModal();
 
   const editedData = useSelector(selectEditedData);
 
@@ -56,6 +61,9 @@ const TodoForm = () => {
       className={s.form}
       onSubmit={!editedData ? handleSubmit : handleEditDataForm}
     >
+      <Button handleClick={() => setModal(<h1>Some modal window</h1>)}>
+        OpenModal
+      </Button>
       <label className={s.label}>
         <span> Date </span>
         <input
@@ -136,6 +144,7 @@ const TodoForm = () => {
             Reset
           </Button>
         )}
+        <Button handleClick={() => setModal(<TodoForm />)}>Open Form</Button>
       </div>
     </form>
   );

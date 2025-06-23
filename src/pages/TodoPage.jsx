@@ -21,6 +21,8 @@ const TodoPage = () => {
     dispatch(getTodo());
   }, [dispatch]);
 
+  console.log('TodoPage');
+
   return (
     <Container>
       <TodoLoader />
